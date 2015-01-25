@@ -181,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				6CA0A7B51A74E88E00AC539F /* Base */,
-				6CA0A7C01A74E88E00AC539F /* Carthage */,
 				6CA0A7C21A74E88E00AC539F /* iOS */,
 				6CA0A7C71A74E88E00AC539F /* Mac OS X */,
 				6CA0A7CD1A74E88E00AC539F /* README.md */,
@@ -219,21 +218,6 @@
 				6CA0A7BF1A74E88E00AC539F /* StaticLibrary.xcconfig */,
 			);
 			path = Targets;
-			sourceTree = "<group>";
-		};
-		6CA0A7C01A74E88E00AC539F /* Carthage */ = {
-			isa = PBXGroup;
-			children = (
-				6CA0A7C11A74E88E00AC539F /* Build */,
-			);
-			path = Carthage;
-			sourceTree = "<group>";
-		};
-		6CA0A7C11A74E88E00AC539F /* Build */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Build;
 			sourceTree = "<group>";
 		};
 		6CA0A7C21A74E88E00AC539F /* iOS */ = {
