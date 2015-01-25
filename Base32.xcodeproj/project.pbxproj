@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6C10E90F1A753A6C006EED90 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CA0A79E1A74E80600AC539F /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
@@ -285,6 +286,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C10E90F1A753A6C006EED90 /* Base32.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
