@@ -606,7 +606,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -617,7 +616,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -715,6 +713,7 @@
 				6CA0A8121A75135D00AC539F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
