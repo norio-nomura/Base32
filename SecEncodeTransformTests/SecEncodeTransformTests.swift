@@ -10,22 +10,6 @@ import Foundation
 import XCTest
 import Security
 
-public func base32EncodeUsingSecEncodeTransform(data: NSData) -> String {
-    var transform = SecEncodeTransformCreate(kSecBase32Encoding, nil)
-    SecTransformSetAttribute(transform.takeUnretainedValue(), kSecTransformInputAttributeName, data, nil)
-    let encodedData = SecTransformExecute(transform.takeUnretainedValue(), nil) as NSData
-    transform.release()
-    return NSString(data: encodedData, encoding: NSUTF8StringEncoding) as String
-}
-
-public func base32DecodeToDataUsingSecEncodeTransform(string: String) -> NSData? {
-    var transform = SecDecodeTransformCreate(kSecBase32Encoding, nil)
-    SecTransformSetAttribute(transform.takeUnretainedValue(), kSecTransformInputAttributeName, string.dataUsingEncoding(NSUTF8StringEncoding), nil)
-    let decodedData = SecTransformExecute(transform.takeUnretainedValue(), nil) as NSData
-    transform.release()
-    return decodedData
-}
-
 class SecEncodeTransformTests: XCTestCase {
     
     let vectors: [(String,String,String)] = [
@@ -56,8 +40,8 @@ class SecEncodeTransformTests: XCTestCase {
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
                     let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-                    let result = base32EncodeUsingSecEncodeTransform(data)
-                    XCTAssertEqual(result, expect, "base32EncodeUsingSecEncodeTransform for \(test)")
+                    let result = TTTBase32EncodedStringFromData(data)
+                    XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
                 }
             }
         }
@@ -68,8 +52,8 @@ class SecEncodeTransformTests: XCTestCase {
             for _ in 0...100 {
                 for (expect, test, testHex) in self.vectors {
                     let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
-                    let result = base32DecodeToDataUsingSecEncodeTransform(test)
-                    XCTAssertEqual(result!, data!, "base32DecodeUsingSecEncodeTransform for \(test)")
+                    let result = TTTDataFromBase32EncodedString(test)
+                    XCTAssertEqual(result, data!, "TTTDataFromBase32EncodedString for \(test)")
                 }
             }
         }
