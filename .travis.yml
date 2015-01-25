@@ -5,7 +5,7 @@ cache:
 install:
   - bundle install --path=vendor/bundle --binstubs=vendor/bin
 script:
-  - bundle exec rake test:ios test:osx
+  - bundle exec rake test:ios test:osx test:SecEncodeTransformTests
 branches:
   only:
     - master
