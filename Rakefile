@@ -17,7 +17,6 @@ namespace :test do
     t.scheme = 'Base32-iOS'
     t.sdk = 'iphonesimulator'
     t.configuration = 'Release'
-    t.build_dir = 'build'
     destinations.each do |destination|
       t.add_destination(destination)
     end
@@ -29,7 +28,6 @@ namespace :test do
     t.scheme = 'Base32-Mac'
     t.sdk = 'macosx'
     t.configuration = 'Release'
-    t.build_dir = 'build'
     t.formatter = 'xcpretty -c'
   end
 
@@ -38,7 +36,6 @@ namespace :test do
     t.scheme = 'SecEncodeTransformTests'
     t.sdk = 'macosx'
     t.configuration = 'Release'
-    t.build_dir = 'build'
     t.formatter = 'xcpretty -c'
   end
 end
