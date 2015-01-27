@@ -47,7 +47,7 @@ class SecEncodeTransformTests: XCTestCase {
         }
     }
     
-    func test_RFC4648_DecodeUsingSecEncodeTransform() {
+    func test_RFC4648_Decode_UsingSecEncodeTransform() {
         self.measureBlock{
             for _ in 0...100 {
                 for (expect, test, testHex) in self.vectors {
