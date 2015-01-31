@@ -143,4 +143,51 @@ class Base32Tests: XCTestCase {
         }
     }
     
+    // MARK:
+    
+    func test_DecodeStringAcceptableLengthPattern() {
+        // "=" stripped valid string
+        let strippedVectors = vectors.map {
+            (
+                $0,
+                $1.stringByReplacingOccurrencesOfString("=", withString:""),
+                $2.stringByReplacingOccurrencesOfString("=", withString:"")
+            )
+        }
+        for (expect, test, testHex) in strippedVectors {
+            let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let result = base32DecodeToData(test)
+            let resultHex = base32HexDecodeToData(testHex)
+            XCTAssertEqual(result!, data!, "base32Decode for \(test)")
+            XCTAssertEqual(resultHex!, data!, "base32HexDecode for \(testHex)")
+        }
+        
+        // invalid length string with padding
+        let invalidVectorWithPaddings: [(String,String)] = [
+            ("M=======", "C======="),
+            ("MYZ=====", "COZ====="),
+            ("MZXW6Z==", "CPNMUZ=="),
+            ("MZXW6YTBO=======", "CPNMUOJ1E======="),
+        ]
+        for (test, testHex) in invalidVectorWithPaddings {
+            let result = base32DecodeToData(test)
+            let resultHex = base32HexDecodeToData(testHex)
+            XCTAssertNil(result, "base32Decode for \(test)")
+            XCTAssertNil(resultHex, "base32HexDecode for \(test)")
+        }
+        
+        // invalid length string without padding
+        let invalidVectorWithoutPaddings = invalidVectorWithPaddings.map {
+            (
+                $0.stringByReplacingOccurrencesOfString("=", withString:""),
+                $1.stringByReplacingOccurrencesOfString("=", withString:"")
+            )
+        }
+        for (test, testHex) in invalidVectorWithPaddings {
+            let result = base32DecodeToData(test)
+            let resultHex = base32HexDecodeToData(testHex)
+            XCTAssertNil(result, "base32Decode for \(test)")
+            XCTAssertNil(resultHex, "base32HexDecode for \(test)")
+        }
+    }
 }
