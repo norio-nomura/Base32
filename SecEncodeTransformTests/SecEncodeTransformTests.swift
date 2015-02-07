@@ -36,11 +36,11 @@ class SecEncodeTransformTests: XCTestCase {
     
     // MARK: Using SecEncodeTransform
     func test_RFC4648_Encode_UsingSecEncodeTransform() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingUTF8StringEncoding
-                    let result = TTTBase32EncodedStringFromData(data)
+                for (test, expect, expectHex) in convertedVectors {
+                    let result = TTTBase32EncodedStringFromData(test)
                     XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
                 }
             }
@@ -48,12 +48,12 @@ class SecEncodeTransformTests: XCTestCase {
     }
     
     func test_RFC4648_Decode_UsingSecEncodeTransform() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingUTF8StringEncoding
+                for (expect, test, testHex) in convertedVectors {
                     let result = TTTDataFromBase32EncodedString(test)
-                    XCTAssertEqual(result, data, "TTTDataFromBase32EncodedString for \(test)")
+                    XCTAssertEqual(result, expect, "TTTDataFromBase32EncodedString for \(test)")
                 }
             }
         }
