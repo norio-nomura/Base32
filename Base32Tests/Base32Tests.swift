@@ -114,10 +114,10 @@ class Base32Tests: XCTestCase {
                 for (test, expect, expectHex) in dataVectors {
                     let result = test.base32EncodedData
                     let resultHex = test.base32HexEncodedData
-                    XCTAssertEqual(result!, expect, "\(test).base32EncodedData")
-                    XCTAssertEqual(resultHex!, expectHex, "\(test).base32HexEncodedData")
-                    let decoded = result!.base32DecodedData
-                    let decodedHex = resultHex!.base32HexDecodedData
+                    XCTAssertEqual(result, expect, "\(test).base32EncodedData")
+                    XCTAssertEqual(resultHex, expectHex, "\(test).base32HexEncodedData")
+                    let decoded = result.base32DecodedData
+                    let decodedHex = resultHex.base32HexDecodedData
                     XCTAssertEqual(decoded!, test, "\(result).base32DecodedData")
                     XCTAssertEqual(decodedHex!, test, "\(resultHex).base32HexDecodedData")
                 }

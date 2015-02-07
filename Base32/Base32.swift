@@ -106,8 +106,8 @@ extension NSData {
         return base32Encode(self)
     }
     
-    public var base32EncodedData: NSData? {
-        return base32EncodedString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+    public var base32EncodedData: NSData {
+        return base32EncodedString.dataUsingUTF8StringEncoding
     }
     
     public var base32DecodedData: NSData? {
@@ -123,8 +123,8 @@ extension NSData {
         return base32HexEncode(self)
     }
     
-    public var base32HexEncodedData: NSData? {
-        return base32HexEncodedString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+    public var base32HexEncodedData: NSData {
+        return base32HexEncodedString.dataUsingUTF8StringEncoding
     }
     
     public var base32HexDecodedData: NSData? {

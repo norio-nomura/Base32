@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6C10E90F1A753A6C006EED90 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */; };
+		6C122F7D1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
+		6C122F7E1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6CA0A79E1A74E80600AC539F /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
@@ -42,6 +44,7 @@
 		6C10E9121A7540B4006EED90 /* SecEncodeTransformTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SecEncodeTransformTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C10E9131A7540B5006EED90 /* TTTDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTDataTransformer.h; sourceTree = "<group>"; };
 		6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTDataTransformer.m; sourceTree = "<group>"; };
+		6C122F7C1A85E52C004FD458 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6CA0A7981A74E80600AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A79C1A74E80600AC539F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA0A79D1A74E80600AC539F /* Base32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base32.h; sourceTree = "<group>"; };
@@ -152,6 +155,7 @@
 			children = (
 				6CA0A79D1A74E80600AC539F /* Base32.h */,
 				6CA0A7EF1A74ECEE00AC539F /* Base32.swift */,
+				6C122F7C1A85E52C004FD458 /* StringExtension.swift */,
 				6CA0A79B1A74E80600AC539F /* Supporting Files */,
 			);
 			path = Base32;
@@ -479,6 +483,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F7D1A85E52C004FD458 /* StringExtension.swift in Sources */,
 				6CA0A7F01A74ECEE00AC539F /* Base32.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -495,6 +500,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F7E1A85E52C004FD458 /* StringExtension.swift in Sources */,
 				6CA0A7F11A74ECEE00AC539F /* Base32.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
