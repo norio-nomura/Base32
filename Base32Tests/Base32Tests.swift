@@ -34,7 +34,7 @@ class Base32Tests: XCTestCase {
     
     // MARK: https://tools.ietf.org/html/rfc4648
     
-    func test_RFC4648_Encode() {
+    func test_RFC4648_base32Encode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
@@ -46,7 +46,7 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_RFC4648_Decode() {
+    func test_RFC4648_base32Decode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
@@ -58,7 +58,7 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_RFC4648_HexEncode() {
+    func test_RFC4648_base32HexEncode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
@@ -70,7 +70,7 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_RFC4648_HexDecode() {
+    func test_RFC4648_base32HexDecode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
@@ -84,7 +84,7 @@ class Base32Tests: XCTestCase {
     
     // MARK: -
     
-    func test_ExtensionString() {
+    func test_base32ExtensionString() {
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
@@ -101,7 +101,7 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_ExtensionData() {
+    func test_base32ExtensionData() {
         let dataVectors = vectors.map {
             (
                 $0.dataUsingUTF8StringEncoding,
@@ -125,7 +125,7 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_ExtensionDataAndString() {
+    func test_base32ExtensionDataAndString() {
         let dataAndStringVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
@@ -145,7 +145,7 @@ class Base32Tests: XCTestCase {
     
     // MARK:
     
-    func test_DecodeStringAcceptableLengthPattern() {
+    func test_base32DecodeStringAcceptableLengthPatterns() {
         // "=" stripped valid string
         let strippedVectors = vectors.map {
             (
