@@ -39,7 +39,7 @@ class SecEncodeTransformTests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+                    let data = test.dataUsingUTF8StringEncoding
                     let result = TTTBase32EncodedStringFromData(data)
                     XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
                 }
@@ -51,9 +51,9 @@ class SecEncodeTransformTests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                    let data = expect.dataUsingUTF8StringEncoding
                     let result = TTTDataFromBase32EncodedString(test)
-                    XCTAssertEqual(result, data!, "TTTDataFromBase32EncodedString for \(test)")
+                    XCTAssertEqual(result, data, "TTTDataFromBase32EncodedString for \(test)")
                 }
             }
         }

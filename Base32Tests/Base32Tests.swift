@@ -1,6 +1,6 @@
 //
 //  Base32Tests.swift
-//  TOTP
+//  Base32
 //
 //  Created by 野村 憲男 on 1/24/15.
 //  Copyright (c) 2015 Norio Nomura. All rights reserved.
@@ -38,7 +38,7 @@ class Base32Tests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+                    let data = test.dataUsingUTF8StringEncoding
                     let result = base32Encode(data)
                     XCTAssertEqual(result, expect, "base32Encode for \(test)")
                 }
@@ -50,9 +50,9 @@ class Base32Tests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                    let data = expect.dataUsingUTF8StringEncoding
                     let result = base32DecodeToData(test)
-                    XCTAssertEqual(result!, data!, "base32Decode for \(test)")
+                    XCTAssertEqual(result!, data, "base32Decode for \(test)")
                 }
             }
         }
@@ -62,7 +62,7 @@ class Base32Tests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
+                    let data = test.dataUsingUTF8StringEncoding
                     let resultHex = base32HexEncode(data)
                     XCTAssertEqual(resultHex, expectHex, "base32HexEncode for \(test)")
                 }
@@ -74,9 +74,9 @@ class Base32Tests: XCTestCase {
         self.measureBlock{
             for _ in 0...100 {
                 for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                    let data = expect.dataUsingUTF8StringEncoding
                     let resultHex = base32HexDecodeToData(testHex)
-                    XCTAssertEqual(resultHex!, data!, "base32HexDecode for \(testHex)")
+                    XCTAssertEqual(resultHex!, data, "base32HexDecode for \(testHex)")
                 }
             }
         }
@@ -104,9 +104,9 @@ class Base32Tests: XCTestCase {
     func test_ExtensionData() {
         let dataVectors = vectors.map {
             (
-                $0.dataUsingEncoding(NSUTF8StringEncoding)!,
-                $1.dataUsingEncoding(NSUTF8StringEncoding)!,
-                $2.dataUsingEncoding(NSUTF8StringEncoding)!
+                $0.dataUsingUTF8StringEncoding,
+                $1.dataUsingUTF8StringEncoding,
+                $2.dataUsingUTF8StringEncoding
             )
         }
         self.measureBlock{
@@ -126,7 +126,7 @@ class Base32Tests: XCTestCase {
     }
     
     func test_ExtensionDataAndString() {
-        let dataAndStringVectors = vectors.map {($0.dataUsingEncoding(NSUTF8StringEncoding)!, $1, $2)}
+        let dataAndStringVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in dataAndStringVectors {
@@ -155,11 +155,11 @@ class Base32Tests: XCTestCase {
             )
         }
         for (expect, test, testHex) in strippedVectors {
-            let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+            let data = expect.dataUsingUTF8StringEncoding
             let result = base32DecodeToData(test)
             let resultHex = base32HexDecodeToData(testHex)
-            XCTAssertEqual(result!, data!, "base32Decode for \(test)")
-            XCTAssertEqual(resultHex!, data!, "base32HexDecode for \(testHex)")
+            XCTAssertEqual(result!, data, "base32Decode for \(test)")
+            XCTAssertEqual(resultHex!, data, "base32HexDecode for \(testHex)")
         }
         
         // invalid length string with padding
