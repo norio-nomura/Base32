@@ -9,6 +9,17 @@
 /* Begin PBXBuildFile section */
 		6C10E90F1A753A6C006EED90 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */; };
+		6C122F7A1A85DC1E004FD458 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
+		6C122F7B1A85DC1E004FD458 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
+		6C122F7D1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
+		6C122F7E1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
+		6C122F801A85E885004FD458 /* Base16Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7F1A85E885004FD458 /* Base16Tests.swift */; };
+		6C122F811A85E885004FD458 /* Base16Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7F1A85E885004FD458 /* Base16Tests.swift */; };
+		6C122F821A85EA0A004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
+		6C122F831A85EA0B004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
+		6C122F851A85EA52004FD458 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F841A85EA52004FD458 /* StringExtensionTests.swift */; };
+		6C122F861A85EA52004FD458 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F841A85EA52004FD458 /* StringExtensionTests.swift */; };
+		6C122F871A85F332004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6CA0A79E1A74E80600AC539F /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
@@ -42,6 +53,10 @@
 		6C10E9121A7540B4006EED90 /* SecEncodeTransformTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SecEncodeTransformTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C10E9131A7540B5006EED90 /* TTTDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTDataTransformer.h; sourceTree = "<group>"; };
 		6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTDataTransformer.m; sourceTree = "<group>"; };
+		6C122F791A85DC1E004FD458 /* Base16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16.swift; sourceTree = "<group>"; };
+		6C122F7C1A85E52C004FD458 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		6C122F7F1A85E885004FD458 /* Base16Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16Tests.swift; sourceTree = "<group>"; };
+		6C122F841A85EA52004FD458 /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
 		6CA0A7981A74E80600AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A79C1A74E80600AC539F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA0A79D1A74E80600AC539F /* Base32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base32.h; sourceTree = "<group>"; };
@@ -152,6 +167,8 @@
 			children = (
 				6CA0A79D1A74E80600AC539F /* Base32.h */,
 				6CA0A7EF1A74ECEE00AC539F /* Base32.swift */,
+				6C122F791A85DC1E004FD458 /* Base16.swift */,
+				6C122F7C1A85E52C004FD458 /* StringExtension.swift */,
 				6CA0A79B1A74E80600AC539F /* Supporting Files */,
 			);
 			path = Base32;
@@ -169,6 +186,8 @@
 			isa = PBXGroup;
 			children = (
 				6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */,
+				6C122F7F1A85E885004FD458 /* Base16Tests.swift */,
+				6C122F841A85EA52004FD458 /* StringExtensionTests.swift */,
 				6CA0A7A81A74E80600AC539F /* Supporting Files */,
 			);
 			path = Base32Tests;
@@ -479,7 +498,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F7D1A85E52C004FD458 /* StringExtension.swift in Sources */,
 				6CA0A7F01A74ECEE00AC539F /* Base32.swift in Sources */,
+				6C122F7A1A85DC1E004FD458 /* Base16.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,7 +508,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F851A85EA52004FD458 /* StringExtensionTests.swift in Sources */,
 				6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */,
+				6C122F801A85E885004FD458 /* Base16Tests.swift in Sources */,
+				6C122F821A85EA0A004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -495,7 +519,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F7E1A85E52C004FD458 /* StringExtension.swift in Sources */,
 				6CA0A7F11A74ECEE00AC539F /* Base32.swift in Sources */,
+				6C122F7B1A85DC1E004FD458 /* Base16.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,7 +529,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C122F861A85EA52004FD458 /* StringExtensionTests.swift in Sources */,
 				6CA0A7EE1A74ECD700AC539F /* Base32Tests.swift in Sources */,
+				6C122F811A85E885004FD458 /* Base16Tests.swift in Sources */,
+				6C122F831A85EA0B004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +542,7 @@
 			files = (
 				6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */,
 				6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */,
+				6C122F871A85F332004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,7 +566,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7B81A74E88E00AC539F /* Debug.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -551,7 +580,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7BA1A74E88E00AC539F /* Release.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -566,6 +594,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7CB1A74E88E00AC539F /* Mac-Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -576,6 +605,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7CB1A74E88E00AC539F /* Mac-Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -604,6 +634,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -614,6 +645,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;

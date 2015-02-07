@@ -1,6 +1,6 @@
 //
 //  Base32Tests.swift
-//  TOTP
+//  Base32
 //
 //  Created by 野村 憲男 on 1/24/15.
 //  Copyright (c) 2015 Norio Nomura. All rights reserved.
@@ -34,49 +34,49 @@ class Base32Tests: XCTestCase {
     
     // MARK: https://tools.ietf.org/html/rfc4648
     
-    func test_RFC4648_Encode() {
+    func test_RFC4648_base32Encode() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-                    let result = base32Encode(data)
+                for (test, expect, expectHex) in convertedVectors {
+                    let result = base32Encode(test)
                     XCTAssertEqual(result, expect, "base32Encode for \(test)")
                 }
             }
         }
     }
     
-    func test_RFC4648_Decode() {
+    func test_RFC4648_base32Decode() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                for (expect, test, testHex) in convertedVectors {
                     let result = base32DecodeToData(test)
-                    XCTAssertEqual(result!, data!, "base32Decode for \(test)")
+                    XCTAssertEqual(result!, expect, "base32Decode for \(test)")
                 }
             }
         }
     }
     
-    func test_RFC4648_HexEncode() {
+    func test_RFC4648_base32HexEncode() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (test, expect, expectHex) in self.vectors {
-                    let data = test.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!
-                    let resultHex = base32HexEncode(data)
+                for (test, expect, expectHex) in convertedVectors {
+                    let resultHex = base32HexEncode(test)
                     XCTAssertEqual(resultHex, expectHex, "base32HexEncode for \(test)")
                 }
             }
         }
     }
     
-    func test_RFC4648_HexDecode() {
+    func test_RFC4648_base32HexDecode() {
+        let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (expect, test, testHex) in self.vectors {
-                    let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
+                for (expect, test, testHex) in convertedVectors {
                     let resultHex = base32HexDecodeToData(testHex)
-                    XCTAssertEqual(resultHex!, data!, "base32HexDecode for \(testHex)")
+                    XCTAssertEqual(resultHex!, expect, "base32HexDecode for \(testHex)")
                 }
             }
         }
@@ -84,7 +84,7 @@ class Base32Tests: XCTestCase {
     
     // MARK: -
     
-    func test_ExtensionString() {
+    func test_base32ExtensionString() {
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
@@ -101,12 +101,12 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_ExtensionData() {
+    func test_base32ExtensionData() {
         let dataVectors = vectors.map {
             (
-                $0.dataUsingEncoding(NSUTF8StringEncoding)!,
-                $1.dataUsingEncoding(NSUTF8StringEncoding)!,
-                $2.dataUsingEncoding(NSUTF8StringEncoding)!
+                $0.dataUsingUTF8StringEncoding,
+                $1.dataUsingUTF8StringEncoding,
+                $2.dataUsingUTF8StringEncoding
             )
         }
         self.measureBlock{
@@ -114,10 +114,10 @@ class Base32Tests: XCTestCase {
                 for (test, expect, expectHex) in dataVectors {
                     let result = test.base32EncodedData
                     let resultHex = test.base32HexEncodedData
-                    XCTAssertEqual(result!, expect, "\(test).base32EncodedData")
-                    XCTAssertEqual(resultHex!, expectHex, "\(test).base32HexEncodedData")
-                    let decoded = result!.base32DecodedData
-                    let decodedHex = resultHex!.base32HexDecodedData
+                    XCTAssertEqual(result, expect, "\(test).base32EncodedData")
+                    XCTAssertEqual(resultHex, expectHex, "\(test).base32HexEncodedData")
+                    let decoded = result.base32DecodedData
+                    let decodedHex = resultHex.base32HexDecodedData
                     XCTAssertEqual(decoded!, test, "\(result).base32DecodedData")
                     XCTAssertEqual(decodedHex!, test, "\(resultHex).base32HexDecodedData")
                 }
@@ -125,8 +125,8 @@ class Base32Tests: XCTestCase {
         }
     }
     
-    func test_ExtensionDataAndString() {
-        let dataAndStringVectors = vectors.map {($0.dataUsingEncoding(NSUTF8StringEncoding)!, $1, $2)}
+    func test_base32ExtensionDataAndString() {
+        let dataAndStringVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
                 for (test, expect, expectHex) in dataAndStringVectors {
@@ -145,21 +145,20 @@ class Base32Tests: XCTestCase {
     
     // MARK:
     
-    func test_DecodeStringAcceptableLengthPattern() {
+    func test_base32DecodeStringAcceptableLengthPatterns() {
         // "=" stripped valid string
         let strippedVectors = vectors.map {
             (
-                $0,
+                $0.dataUsingUTF8StringEncoding,
                 $1.stringByReplacingOccurrencesOfString("=", withString:""),
                 $2.stringByReplacingOccurrencesOfString("=", withString:"")
             )
         }
         for (expect, test, testHex) in strippedVectors {
-            let data = expect.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)
             let result = base32DecodeToData(test)
             let resultHex = base32HexDecodeToData(testHex)
-            XCTAssertEqual(result!, data!, "base32Decode for \(test)")
-            XCTAssertEqual(resultHex!, data!, "base32HexDecode for \(testHex)")
+            XCTAssertEqual(result!, expect, "base32Decode for \(test)")
+            XCTAssertEqual(resultHex!, expect, "base32HexDecode for \(testHex)")
         }
         
         // invalid length string with padding
