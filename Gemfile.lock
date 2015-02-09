@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/norio-nomura/xcjobs.git
-  revision: ebfe8050aac3bf95dfcd6d1bdcb4dc9dc8358c56
+  revision: ed10d05caf1d7f74d4efa109e1f79228539e5571
   branch: subclass-of-rake-task
   specs:
-    xcjobs (0.0.4)
+    xcjobs (0.0.7)
 
 GIT
   remote: https://github.com/norio-nomura/xcpretty.git
