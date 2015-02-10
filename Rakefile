@@ -1,13 +1,13 @@
 require 'xcjobs'
 
 def destinations
-  [ 'name=iPad 2,OS=8.1',
-    'name=iPad Air,OS=8.1',
-    'name=iPhone 4s,OS=8.1',
-    'name=iPhone 5,OS=8.1',
-    'name=iPhone 5s,OS=8.1',
-    'name=iPhone 6,OS=8.1',
-    'name=iPhone 6 Plus,OS=8.1'
+  [ 'name=iPad 2',
+    'name=iPad Air',
+    'name=iPhone 4s',
+    'name=iPhone 5',
+    'name=iPhone 5s',
+    'name=iPhone 6',
+    'name=iPhone 6 Plus'
   ]
 end
 
