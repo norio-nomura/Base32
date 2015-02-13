@@ -10,8 +10,8 @@ import Foundation
 
 // MARK: - Base16 NSData <-> String
 
-public func base16Encode(data: NSData) -> String {
-    return base16encode(data.bytes, data.length)
+public func base16Encode(data: NSData, uppercase: Bool = true) -> String {
+    return base16encode(data.bytes, data.length, uppercase: uppercase)
 }
 
 public func base16DecodeToData(string: String) -> NSData? {
@@ -24,8 +24,8 @@ public func base16DecodeToData(string: String) -> NSData? {
 
 // MARK: - Base16 [UInt8] <-> String
 
-public func base16Encode(array: [UInt8]) -> String {
-    return base16encode(array, array.count)
+public func base16Encode(array: [UInt8], uppercase: Bool = true) -> String {
+    return base16encode(array, array.count, uppercase: uppercase)
 }
 
 public func base16Decode(string: String) -> [UInt8]? {
@@ -77,7 +77,7 @@ extension NSData {
 }
 
 // MARK: encode
-private func base16encode(data: UnsafePointer<Void>, var length: Int, uppercase: Bool = true) -> String {
+private func base16encode(data: UnsafePointer<Void>, length: Int, uppercase: Bool = true) -> String {
     let array = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(data), count: length)
     return map(array) { String(format: uppercase ? "%02X" : "%02x", $0) }.reduce("", +)
 }

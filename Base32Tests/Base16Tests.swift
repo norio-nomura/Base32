@@ -106,4 +106,16 @@ class Base16Tests: XCTestCase {
             }
         }
     }
+    
+    func test_lowercase() {
+        let lowercaseDataString = "abcdef"
+        
+        let decodedArray = base16Decode(lowercaseDataString)!
+        let encodedFromArray = base16Encode(decodedArray, uppercase: false)
+        XCTAssertEqual(encodedFromArray, lowercaseDataString)
+        
+        let decodedData = base16DecodeToData(lowercaseDataString)!
+        let encodedFromData = base16Encode(decodedData, uppercase: false)
+        XCTAssertEqual(encodedFromData, lowercaseDataString)
+    }
 }
