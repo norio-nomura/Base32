@@ -39,3 +39,11 @@ namespace :test do
     t.formatter = 'xcpretty -c'
   end
 end
+
+# If this environment variable is missing, we must not be running on Travis.
+if ENV["KEY_PASSWORD"]
+  XCJobs::Certificate.new do |t|
+    t.add_certificate('./certificates/AppleWWDRCA.cer')
+    t.add_certificate('./certificates/development.p12', ENV["KEY_PASSWORD"])
+  end
+end
