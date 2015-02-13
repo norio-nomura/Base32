@@ -41,10 +41,8 @@ extension String {
     }
     
     public var base16EncodedString: String {
-        let length = lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            (p: UnsafeBufferPointer<UInt8>) -> String in
-            return base16encode(p.baseAddress, length)
+            return base16encode($0.baseAddress, $0.count - 1)
         }
     }
     
@@ -98,7 +96,7 @@ extension UnicodeScalar {
 
 private func base16decode(string: String) -> [UInt8]? {
     // validate length
-    let lenght = countElements(string)
+    let lenght = string.nulTerminatedUTF8.count - 1
     if lenght % 2 != 0 {
         println("base16decode: String must contain even number of characters")
         return nil

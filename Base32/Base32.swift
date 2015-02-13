@@ -63,10 +63,8 @@ extension String {
     }
     
     public var base32EncodedString: String {
-        let length = lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            (p: UnsafeBufferPointer<UInt8>) -> String in
-            return base32encode(p.baseAddress, length, alphabetEncodeTable)
+            return base32encode($0.baseAddress, $0.count - 1, alphabetEncodeTable)
         }
     }
     
@@ -84,10 +82,8 @@ extension String {
     }
     
     public var base32HexEncodedString: String {
-        let length = lengthOfBytesUsingEncoding(NSUTF8StringEncoding)
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            (p: UnsafeBufferPointer<UInt8>) -> String in
-            return base32encode(p.baseAddress, length, extendedHexAlphabetEncodeTable)
+            return base32encode($0.baseAddress, $0.count - 1, extendedHexAlphabetEncodeTable)
         }
     }
     

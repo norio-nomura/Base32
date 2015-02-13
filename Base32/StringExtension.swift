@@ -13,17 +13,15 @@ import Foundation
 extension String {
     /// NSData never nil
     internal var dataUsingUTF8StringEncoding: NSData {
-        let length = nulTerminatedUTF8.count - 1
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return NSData(bytes: $0.baseAddress, length: length)
+            return NSData(bytes: $0.baseAddress, length: $0.count - 1)
         }
     }
     
     /// Array<UInt8>
     internal var arrayUsingUTF8StringEncoding: [UInt8] {
-        let length = nulTerminatedUTF8.count - 1
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return Array(UnsafeBufferPointer(start: $0.baseAddress, count: length))
+            return Array(UnsafeBufferPointer(start: $0.baseAddress, count: $0.count - 1))
         }
     }
 }
