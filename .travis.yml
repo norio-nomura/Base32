@@ -36,7 +36,7 @@ notifications:
   email: false
   webhooks:
     urls:
-      secure: T4OMrlN5s9H5rFeN8/F7yHXMD2pmTAR0tfYWt6ps1sa2FU3eU4HEbvJ5REfd9xNh5DgQTX3cqSM1doFPJjw50WdYKa6y9KE57XVWD7+5pf6igtZWuAI0jWSDu+hfJUBMEpPqt7jZCRA6ykmmZitLaRqFxfQ++C6ioY7OoJJKGHE=
+    - https://webhooks.gitter.im/e/8fd4ccca60282fabc3b1
     on_success: always  # options: [always|never|change] default: always
     on_failure: always  # options: [always|never|change] default: always
     on_start: true     # default: false
