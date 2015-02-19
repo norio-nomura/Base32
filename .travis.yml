@@ -16,7 +16,7 @@ script:
 branches:
   only:
   - master
-  - /^v\d+\.\d+\.\d+$/
+  - "/^v\\d+\\.\\d+\\.\\d+$/"
 env:
   global:
   - LANG=en_US.UTF-8
@@ -32,3 +32,6 @@ deploy:
   on:
     tags: true
   skip_cleanup: true
+notifications:
+  slack:
+    secure: bpL9S5ijzUEmkGLiSiUrXfQifkiYYSRyqBicQihaLMsVa7rGZTQW45armRw/3QpzBMKITGOFbr/t1lCWsV8PJYnq8YWtIk+ZHKwdME0VUaXO0Ll1lbZcIPcepEk5wURbWutX1WiUvzOjxiuorFGWMjHdXORzgEdO6FzwuDUQSgg=
