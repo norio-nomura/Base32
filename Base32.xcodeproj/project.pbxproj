@@ -33,6 +33,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		6C73ACC31A9C654F0079B6E8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6CA0A78F1A74E80600AC539F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6CA0A7971A74E80600AC539F;
+			remoteInfo = "Base32-Mac";
+		};
 		6CA0A7A51A74E80600AC539F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6CA0A78F1A74E80600AC539F /* Project object */;
@@ -83,7 +90,7 @@
 		6CA0A7CD1A74E88E00AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6CA0A7D31A74E91700AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A7DD1A74E91800AC539F /* Base32-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Base32-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CA0A7EC1A74ECA900AC539F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		6CA0A7EC1A74ECA900AC539F /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		6CA0A7ED1A74ECC500AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6CA0A7EF1A74ECEE00AC539F /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		6CA0A7F31A74EE7B00AC539F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -141,7 +148,7 @@
 			children = (
 				6CA0A7ED1A74ECC500AC539F /* README.md */,
 				6CA0A7F31A74EE7B00AC539F /* LICENSE */,
-				6CA0A7EC1A74ECA900AC539F /* Cartfile */,
+				6CA0A7EC1A74ECA900AC539F /* Cartfile.private */,
 				6CA0A79A1A74E80600AC539F /* Base32 */,
 				6CA0A7A71A74E80600AC539F /* Base32Tests */,
 				6CA0A7B41A74E88E00AC539F /* xcconfigs */,
@@ -402,6 +409,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				6C73ACC41A9C654F0079B6E8 /* PBXTargetDependency */,
 			);
 			name = SecEncodeTransformTests;
 			productName = SecEncodeTransformTests;
@@ -549,6 +557,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		6C73ACC41A9C654F0079B6E8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6CA0A7971A74E80600AC539F /* Base32-Mac */;
+			targetProxy = 6C73ACC31A9C654F0079B6E8 /* PBXContainerItemProxy */;
+		};
 		6CA0A7A61A74E80600AC539F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6CA0A7971A74E80600AC539F /* Base32-Mac */;
@@ -568,6 +581,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
@@ -583,6 +597,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				TARGETED_DEVICE_FAMILY = "1,2";
