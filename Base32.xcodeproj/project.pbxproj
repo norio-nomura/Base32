@@ -90,7 +90,7 @@
 		6CA0A7CD1A74E88E00AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6CA0A7D31A74E91700AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A7DD1A74E91800AC539F /* Base32-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Base32-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6CA0A7EC1A74ECA900AC539F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		6CA0A7EC1A74ECA900AC539F /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		6CA0A7ED1A74ECC500AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6CA0A7EF1A74ECEE00AC539F /* Base32.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base32.swift; sourceTree = "<group>"; };
 		6CA0A7F31A74EE7B00AC539F /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			children = (
 				6CA0A7ED1A74ECC500AC539F /* README.md */,
 				6CA0A7F31A74EE7B00AC539F /* LICENSE */,
-				6CA0A7EC1A74ECA900AC539F /* Cartfile */,
+				6CA0A7EC1A74ECA900AC539F /* Cartfile.private */,
 				6CA0A79A1A74E80600AC539F /* Base32 */,
 				6CA0A7A71A74E80600AC539F /* Base32Tests */,
 				6CA0A7B41A74E88E00AC539F /* xcconfigs */,
