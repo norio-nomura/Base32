@@ -273,7 +273,7 @@ let extendedHexAlphabetDecodeTable: [UInt8] = [
 
 
 private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
-    let length = countElements(string.unicodeScalars)
+    let length = count(string.unicodeScalars)
     if length == 0 {
         return []
     }
