@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "6CA0A7D21A74E91700AC539F"
-               BuildableName = "Base32.framework"
+               BuildableName = ".framework"
                BlueprintName = "Base32-iOS"
                ReferencedContainer = "container:Base32.xcodeproj">
             </BuildableReference>
@@ -57,7 +57,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6CA0A7D21A74E91700AC539F"
-            BuildableName = "Base32.framework"
+            BuildableName = ".framework"
             BlueprintName = "Base32-iOS"
             ReferencedContainer = "container:Base32.xcodeproj">
          </BuildableReference>
@@ -76,7 +76,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6CA0A7D21A74E91700AC539F"
-            BuildableName = "Base32.framework"
+            BuildableName = ".framework"
             BlueprintName = "Base32-iOS"
             ReferencedContainer = "container:Base32.xcodeproj">
          </BuildableReference>
@@ -94,7 +94,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "6CA0A7D21A74E91700AC539F"
-            BuildableName = "Base32.framework"
+            BuildableName = ".framework"
             BlueprintName = "Base32-iOS"
             ReferencedContainer = "container:Base32.xcodeproj">
          </BuildableReference>

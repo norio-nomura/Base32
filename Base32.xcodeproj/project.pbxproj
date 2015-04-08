@@ -21,14 +21,14 @@
 		6C122F861A85EA52004FD458 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F841A85EA52004FD458 /* StringExtensionTests.swift */; };
 		6C122F871A85F332004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6CA0A79E1A74E80600AC539F /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
+		6CA0A7A41A74E80600AC539F /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* .framework */; };
 		6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
-		6CA0A7DE1A74E91800AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7D31A74E91700AC539F /* Base32.framework */; };
+		6CA0A7DE1A74E91800AC539F /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7D31A74E91700AC539F /* .framework */; };
 		6CA0A7EE1A74ECD700AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
 		6CA0A7F01A74ECEE00AC539F /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7EF1A74ECEE00AC539F /* Base32.swift */; };
 		6CA0A7F11A74ECEE00AC539F /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7EF1A74ECEE00AC539F /* Base32.swift */; };
 		6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */; };
-		6CA0A80D1A75135D00AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
+		6CA0A80D1A75135D00AC539F /* .framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* .framework */; };
 		6CA0A8131A75138900AC539F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7F71A7507CE00AC539F /* Security.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +64,7 @@
 		6C122F7C1A85E52C004FD458 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6C122F7F1A85E885004FD458 /* Base16Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16Tests.swift; sourceTree = "<group>"; };
 		6C122F841A85EA52004FD458 /* StringExtensionTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtensionTests.swift; sourceTree = "<group>"; };
-		6CA0A7981A74E80600AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0A7981A74E80600AC539F /* .framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = .framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A79C1A74E80600AC539F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA0A79D1A74E80600AC539F /* Base32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Base32.h; sourceTree = "<group>"; };
 		6CA0A7A31A74E80600AC539F /* Base32-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Base32-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,7 +88,7 @@
 		6CA0A7CB1A74E88E00AC539F /* Mac-Framework.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-Framework.xcconfig"; sourceTree = "<group>"; };
 		6CA0A7CC1A74E88E00AC539F /* Mac-StaticLibrary.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Mac-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 		6CA0A7CD1A74E88E00AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		6CA0A7D31A74E91700AC539F /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6CA0A7D31A74E91700AC539F /* .framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = .framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A7DD1A74E91800AC539F /* Base32-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Base32-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A7EC1A74ECA900AC539F /* Cartfile.private */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile.private; sourceTree = "<group>"; };
 		6CA0A7ED1A74ECC500AC539F /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -112,7 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */,
+				6CA0A7A41A74E80600AC539F /* .framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -127,7 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6CA0A7DE1A74E91800AC539F /* Base32.framework in Frameworks */,
+				6CA0A7DE1A74E91800AC539F /* .framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,7 +136,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CA0A8131A75138900AC539F /* Security.framework in Frameworks */,
-				6CA0A80D1A75135D00AC539F /* Base32.framework in Frameworks */,
+				6CA0A80D1A75135D00AC539F /* .framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,9 +160,9 @@
 		6CA0A7991A74E80600AC539F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6CA0A7981A74E80600AC539F /* Base32.framework */,
+				6CA0A7981A74E80600AC539F /* .framework */,
 				6CA0A7A31A74E80600AC539F /* Base32-MacTests.xctest */,
-				6CA0A7D31A74E91700AC539F /* Base32.framework */,
+				6CA0A7D31A74E91700AC539F /* .framework */,
 				6CA0A7DD1A74E91800AC539F /* Base32-iOSTests.xctest */,
 				6CA0A8071A75135D00AC539F /* SecEncodeTransformTests.xctest */,
 			);
@@ -341,7 +341,7 @@
 			);
 			name = "Base32-Mac";
 			productName = Base32;
-			productReference = 6CA0A7981A74E80600AC539F /* Base32.framework */;
+			productReference = 6CA0A7981A74E80600AC539F /* .framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6CA0A7A21A74E80600AC539F /* Base32-MacTests */ = {
@@ -377,7 +377,7 @@
 			);
 			name = "Base32-iOS";
 			productName = Base32;
-			productReference = 6CA0A7D31A74E91700AC539F /* Base32.framework */;
+			productReference = 6CA0A7D31A74E91700AC539F /* .framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		6CA0A7DC1A74E91800AC539F /* Base32-iOSTests */ = {
