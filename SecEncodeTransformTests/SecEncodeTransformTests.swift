@@ -40,7 +40,7 @@ class SecEncodeTransformTests: XCTestCase {
 
     // MARK: Using SecEncodeTransform
     func test_RFC4648_Encode_UsingSecEncodeTransform() {
-        var results = Array<String>(count: countElements(convertedVectors), repeatedValue: "")
+        var results = Array<String>(count: count(convertedVectors), repeatedValue: "")
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
@@ -55,7 +55,7 @@ class SecEncodeTransformTests: XCTestCase {
     }
     
     func test_RFC4648_Decode_UsingSecEncodeTransform() {
-        var results = Array<NSData>(count: countElements(convertedVectors), repeatedValue: NSData())
+        var results = Array<NSData>(count: count(convertedVectors), repeatedValue: NSData())
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
@@ -71,7 +71,7 @@ class SecEncodeTransformTests: XCTestCase {
     
     // MARK: Using Base32
     func test_RFC4648_Encode_UsingBase32() {
-        var results = Array<String>(count: countElements(convertedVectors), repeatedValue: "")
+        var results = Array<String>(count: count(convertedVectors), repeatedValue: "")
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
@@ -86,7 +86,7 @@ class SecEncodeTransformTests: XCTestCase {
     }
     
     func test_RFC4648_Decode_UsingBase32() {
-        var results = Array<NSData>(count: countElements(convertedVectors), repeatedValue: NSData())
+        var results = Array<NSData>(count: count(convertedVectors), repeatedValue: NSData())
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {

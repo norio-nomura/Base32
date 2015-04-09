@@ -77,7 +77,7 @@ extension NSData {
 // MARK: encode
 private func base16encode(data: UnsafePointer<Void>, length: Int, uppercase: Bool = true) -> String {
     let array = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(data), count: length)
-    return map(array) { String(format: uppercase ? "%02X" : "%02x", $0) }.reduce("", +)
+    return map(array) { String(format: uppercase ? "%02X" : "%02x", $0) }.reduce("", combine: +)
 }
 
 // MARK: decode
