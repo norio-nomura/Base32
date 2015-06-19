@@ -38,7 +38,7 @@ class Base32Tests: XCTestCase {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (test, expect, expectHex) in convertedVectors {
+                for (test, expect, _) in convertedVectors {
                     let result = base32Encode(test)
                     XCTAssertEqual(result, expect, "base32Encode for \(test)")
                 }
@@ -50,7 +50,7 @@ class Base32Tests: XCTestCase {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (expect, test, testHex) in convertedVectors {
+                for (expect, test, _) in convertedVectors {
                     let result = base32DecodeToData(test)
                     XCTAssertEqual(result!, expect, "base32Decode for \(test)")
                 }
@@ -62,7 +62,7 @@ class Base32Tests: XCTestCase {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (test, expect, expectHex) in convertedVectors {
+                for (test, _, expectHex) in convertedVectors {
                     let resultHex = base32HexEncode(test)
                     XCTAssertEqual(resultHex, expectHex, "base32HexEncode for \(test)")
                 }
@@ -74,7 +74,7 @@ class Base32Tests: XCTestCase {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
         self.measureBlock{
             for _ in 0...100 {
-                for (expect, test, testHex) in convertedVectors {
+                for (expect, _, testHex) in convertedVectors {
                     let resultHex = base32HexDecodeToData(testHex)
                     XCTAssertEqual(resultHex!, expect, "base32HexDecode for \(testHex)")
                 }
@@ -176,7 +176,7 @@ class Base32Tests: XCTestCase {
         }
         
         // invalid length string without padding
-        let invalidVectorWithoutPaddings = invalidVectorWithPaddings.map {
+        _ = invalidVectorWithPaddings.map {
             (
                 $0.stringByReplacingOccurrencesOfString("=", withString:""),
                 $1.stringByReplacingOccurrencesOfString("=", withString:"")

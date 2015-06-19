@@ -13,15 +13,15 @@ import Foundation
 // MARK: - Base32 NSData <-> String
 
 public func base32Encode(data: NSData) -> String {
-    return base32encode(data.bytes, data.length, alphabetEncodeTable)
+    return base32encode(data.bytes, length: data.length, table: alphabetEncodeTable)
 }
 
 public func base32HexEncode(data: NSData) -> String {
-    return base32encode(data.bytes, data.length, extendedHexAlphabetEncodeTable)
+    return base32encode(data.bytes, length: data.length, table: extendedHexAlphabetEncodeTable)
 }
 
 public func base32DecodeToData(string: String) -> NSData? {
-    if let array = base32decode(string, alphabetDecodeTable) {
+    if let array = base32decode(string, table: alphabetDecodeTable) {
         return NSData(bytes: array, length: array.count)
     } else {
         return nil
@@ -29,7 +29,7 @@ public func base32DecodeToData(string: String) -> NSData? {
 }
 
 public func base32HexDecodeToData(string: String) -> NSData? {
-    if let array = base32decode(string, extendedHexAlphabetDecodeTable) {
+    if let array = base32decode(string, table: extendedHexAlphabetDecodeTable) {
         return NSData(bytes: array, length: array.count)
     } else {
         return nil
@@ -39,19 +39,19 @@ public func base32HexDecodeToData(string: String) -> NSData? {
 // MARK: - Base32 [UInt8] <-> String
 
 public func base32Encode(array: [UInt8]) -> String {
-    return base32encode(array, array.count, alphabetEncodeTable)
+    return base32encode(array, length: array.count, table: alphabetEncodeTable)
 }
 
 public func base32HexEncode(array: [UInt8]) -> String {
-    return base32encode(array, array.count, extendedHexAlphabetEncodeTable)
+    return base32encode(array, length: array.count, table: extendedHexAlphabetEncodeTable)
 }
 
 public func base32Decode(string: String) -> [UInt8]? {
-    return base32decode(string, alphabetDecodeTable)
+    return base32decode(string, table: alphabetDecodeTable)
 }
 
 public func base32HexDecode(string: String) -> [UInt8]? {
-    return base32decode(string, extendedHexAlphabetDecodeTable)
+    return base32decode(string, table: extendedHexAlphabetDecodeTable)
 }
 
 // MARK: extensions
@@ -64,7 +64,7 @@ extension String {
     
     public var base32EncodedString: String {
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return base32encode($0.baseAddress, $0.count - 1, alphabetEncodeTable)
+            return base32encode($0.baseAddress, length: $0.count - 1, table: alphabetEncodeTable)
         }
     }
     
@@ -83,7 +83,7 @@ extension String {
     
     public var base32HexEncodedString: String {
         return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return base32encode($0.baseAddress, $0.count - 1, extendedHexAlphabetEncodeTable)
+            return base32encode($0.baseAddress, length: $0.count - 1, table: extendedHexAlphabetEncodeTable)
         }
     }
     
@@ -273,14 +273,14 @@ let extendedHexAlphabetDecodeTable: [UInt8] = [
 
 
 private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
-    let length = count(string.unicodeScalars)
+    let length = string.unicodeScalars.count
     if length == 0 {
         return []
     }
     
     // search element index that condition is true.
     func index_of<C : CollectionType where C.Generator.Element : Equatable>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
-        return find(lazy(domain).map(condition), true)
+        return lazy(domain).map(condition).indexOf(true)
     }
     
     // calc padding length
@@ -300,12 +300,12 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     
     // validate string
     let leastPaddingLength = getLeastPaddingLength(string)
-    if let index = index_of(string.unicodeScalars, {$0.value > 0xff || table[Int($0.value)] > 31}) {
+    if let index = index_of(string.unicodeScalars, condition: {$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
         let pos = distance(string.unicodeScalars.startIndex, index)
         // if pos points padding "=", it's valid.
         if pos != length - leastPaddingLength {
-            println("string contains some invalid characters.")
+            print("string contains some invalid characters.")
             return nil
         }
     }
@@ -320,7 +320,7 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     case 5: additionalBytes = 3
     case 7: additionalBytes = 4
     default:
-        println("string length is invalid.")
+        print("string length is invalid.")
         return nil
     }
     
