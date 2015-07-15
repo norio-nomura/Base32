@@ -9,7 +9,7 @@ GEM
   remote: https://rubygems.org/
   specs:
     rake (10.4.2)
-    xcpretty (0.1.8)
+    xcpretty (0.1.10)
 
 PLATFORMS
   ruby
@@ -18,3 +18,6 @@ DEPENDENCIES
   rake
   xcjobs!
   xcpretty
+
+BUNDLED WITH
+   1.10.5
