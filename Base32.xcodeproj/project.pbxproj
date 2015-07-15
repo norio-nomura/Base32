@@ -610,7 +610,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7CB1A74E88E00AC539F /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -621,7 +620,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7CB1A74E88E00AC539F /* Mac-Framework.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -650,7 +648,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
@@ -661,7 +658,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6CA0A7C51A74E88E00AC539F /* iOS-Framework.xcconfig */;
 			buildSettings = {
-				APPLICATION_EXTENSION_API_ONLY = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
