@@ -280,7 +280,7 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     
     // search element index that condition is true.
     func index_of<C : CollectionType where C.Generator.Element : Equatable>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
-        return lazy(domain).map(condition).indexOf(true)
+        return domain.lazy.map(condition).indexOf(true)
     }
     
     // calc padding length
@@ -302,7 +302,7 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     let leastPaddingLength = getLeastPaddingLength(string)
     if let index = index_of(string.unicodeScalars, condition: {$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
-        let pos = distance(string.unicodeScalars.startIndex, index)
+        let pos = string.unicodeScalars.startIndex.distanceTo(index)
         // if pos points padding "=", it's valid.
         if pos != length - leastPaddingLength {
             print("string contains some invalid characters.")
