@@ -424,7 +424,7 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Norio Nomura";
 				TargetAttributes = {
 					6CA0A7971A74E80600AC539F = {
@@ -583,6 +583,7 @@
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -615,6 +616,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 			};
 			name = Debug;
 		};
@@ -625,6 +627,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 			};
 			name = Release;
 		};
@@ -633,6 +636,7 @@
 			baseConfigurationReference = 6CA0A7C81A74E88E00AC539F /* Mac-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Base32Tests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -642,6 +646,7 @@
 			baseConfigurationReference = 6CA0A7C81A74E88E00AC539F /* Mac-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Base32Tests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -653,6 +658,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 			};
 			name = Debug;
 		};
@@ -663,6 +669,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 			};
 			name = Release;
 		};
@@ -671,6 +678,7 @@
 			baseConfigurationReference = 6CA0A7C31A74E88E00AC539F /* iOS-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Base32Tests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -680,6 +688,7 @@
 			baseConfigurationReference = 6CA0A7C31A74E88E00AC539F /* iOS-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = Base32Tests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -689,6 +698,7 @@
 			baseConfigurationReference = 6CA0A7C81A74E88E00AC539F /* Mac-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SecEncodeTransformTests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
 			};
@@ -699,6 +709,7 @@
 			baseConfigurationReference = 6CA0A7C81A74E88E00AC539F /* Mac-Application.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = SecEncodeTransformTests/Info.plist;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
 			};
