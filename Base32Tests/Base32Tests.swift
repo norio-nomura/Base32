@@ -200,7 +200,7 @@ class Base32Tests: XCTestCase {
                 $1.stringByReplacingOccurrencesOfString("=", withString:"")
             )
         }
-        for (test, testHex) in invalidVectorWithPaddings {
+        for (test, testHex) in invalidVectorWithoutPaddings {
             let result = base32DecodeToData(test)
             let resultHex = base32HexDecodeToData(testHex)
             XCTAssertNil(result, "base32Decode for \(test)")
