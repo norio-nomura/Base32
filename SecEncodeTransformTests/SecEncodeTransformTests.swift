@@ -44,7 +44,7 @@ class SecEncodeTransformTests: XCTestCase {
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
-                for ((test, expect, _), index) in vectorsAndIndices {
+                for ((test, _, _), index) in vectorsAndIndices {
                     results[index] = TTTBase32EncodedStringFromData(test)
                 }
             }
@@ -59,7 +59,7 @@ class SecEncodeTransformTests: XCTestCase {
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
-                for ((expect, test, _), index) in vectorsAndIndices {
+                for ((_, test, _), index) in vectorsAndIndices {
                     results[index] = TTTDataFromBase32EncodedString(test)
                 }
             }
@@ -75,7 +75,7 @@ class SecEncodeTransformTests: XCTestCase {
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
-                for ((test, expect, _), index) in vectorsAndIndices {
+                for ((test, _, _), index) in vectorsAndIndices {
                     results[index] = base32Encode(test)
                 }
             }
@@ -90,7 +90,7 @@ class SecEncodeTransformTests: XCTestCase {
         let vectorsAndIndices = Zip2(convertedVectors, indices(results))
         self.measureBlock{
             for _ in 0...100 {
-                for ((expect, test, _), index) in vectorsAndIndices {
+                for ((_, test, _), index) in vectorsAndIndices {
                     results[index] = base32DecodeToData(test)!
                 }
             }
