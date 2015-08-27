@@ -422,6 +422,8 @@
 		6CA0A78F1A74E80600AC539F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = "Norio Nomura";
 				TargetAttributes = {

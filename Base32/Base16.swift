@@ -93,9 +93,9 @@ extension NSData {
 }
 
 // MARK: encode
-private func base16encode(data: UnsafePointer<Void>, length: Int, _ uppercase: Bool = true) -> String {
+private func base16encode(data: UnsafePointer<Void>, _ length: Int, _ uppercase: Bool = true) -> String {
     let array = UnsafeBufferPointer<UInt8>(start: UnsafePointer<UInt8>(data), count: length)
-    return map(array) { String(format: uppercase ? "%02X" : "%02x", $0) }.reduce("", combine: +)
+    return array.map { String(format: uppercase ? "%02X" : "%02x", $0) }.reduce("", combine: +)
 }
 
 // MARK: decode
@@ -106,7 +106,7 @@ extension UnicodeScalar {
         case "a"..."f": return UInt8(value - UnicodeScalar("a").value + 0xa)
         case "A"..."F": return UInt8(value - UnicodeScalar("A").value + 0xa)
         default:
-            println("base16decode: Invalid hex character \(self)")
+            print("base16decode: Invalid hex character \(self)")
             return nil
         }
     }
@@ -116,7 +116,7 @@ private func base16decode(string: String) -> [UInt8]? {
     // validate length
     let lenght = string.nulTerminatedUTF8.count - 1
     if lenght % 2 != 0 {
-        println("base16decode: String must contain even number of characters")
+        print("base16decode: String must contain even number of characters")
         return nil
     }
     var g = string.unicodeScalars.generate()
