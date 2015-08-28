@@ -23,6 +23,7 @@ env:
   - LANG=en_US.UTF-8
   - LC_ALL=en_US.UTF-8
   - secure: IP57b/yOhCM+IRcOrnlWZAauuqWTtz6k/a3QTyUXGFyryyLJC1sQSD5wzDIP7YfgM9MrnjUihZEuyR/PSyD/GNQFk5hHNToLBScJg4p0eKQaLoxFeT9twFF4AxwUo4eaYEcgodLDm/1LMe+KwX27QOpb8BboAwg0NychgoVy/dw=
+  - secure: VMoyMAzLdKEsdWknGhw8IVJeTEA8B5dIP49esIrkwG0ZY6VOwJHtIJzOK6lhfijJW7tpm4cdlDL7RRZUx4tI8rTFP1bDxi0VXjYVMUTg/LUDbEiNP+N2YOCPyjrfQWHRj0U7i7Hk+qjX3tKtp3jzRKsSDJETNqttI43lvd3hzSw=
 before_deploy:
 - carthage archive Base32
 deploy:
