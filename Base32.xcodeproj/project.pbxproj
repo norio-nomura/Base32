@@ -98,6 +98,14 @@
 		6CA0A8071A75135D00AC539F /* SecEncodeTransformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecEncodeTransformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A80A1A75135D00AC539F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecEncodeTransformTests.swift; sourceTree = "<group>"; };
+		6CCCF1C41BC205D1003CE287 /* tvOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Application.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1C51BC205D1003CE287 /* tvOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Base.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1C61BC205D1003CE287 /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1C71BC205D1003CE287 /* tvOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1C91BC205D1003CE287 /* watchOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Application.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1CA1BC205D1003CE287 /* watchOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Base.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1CB1BC205D1003CE287 /* watchOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Framework.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1CC1BC205D1003CE287 /* watchOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,6 +222,8 @@
 				6CA0A7B51A74E88E00AC539F /* Base */,
 				6CA0A7C21A74E88E00AC539F /* iOS */,
 				6CA0A7C71A74E88E00AC539F /* Mac OS X */,
+				6CCCF1C31BC205D1003CE287 /* tvOS */,
+				6CCCF1C81BC205D1003CE287 /* watchOS */,
 				6CA0A7CD1A74E88E00AC539F /* README.md */,
 			);
 			name = xcconfigs;
@@ -302,6 +312,28 @@
 				6CA0A80A1A75135D00AC539F /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6CCCF1C31BC205D1003CE287 /* tvOS */ = {
+			isa = PBXGroup;
+			children = (
+				6CCCF1C41BC205D1003CE287 /* tvOS-Application.xcconfig */,
+				6CCCF1C51BC205D1003CE287 /* tvOS-Base.xcconfig */,
+				6CCCF1C61BC205D1003CE287 /* tvOS-Framework.xcconfig */,
+				6CCCF1C71BC205D1003CE287 /* tvOS-StaticLibrary.xcconfig */,
+			);
+			path = tvOS;
+			sourceTree = "<group>";
+		};
+		6CCCF1C81BC205D1003CE287 /* watchOS */ = {
+			isa = PBXGroup;
+			children = (
+				6CCCF1C91BC205D1003CE287 /* watchOS-Application.xcconfig */,
+				6CCCF1CA1BC205D1003CE287 /* watchOS-Base.xcconfig */,
+				6CCCF1CB1BC205D1003CE287 /* watchOS-Framework.xcconfig */,
+				6CCCF1CC1BC205D1003CE287 /* watchOS-StaticLibrary.xcconfig */,
+			);
+			path = watchOS;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
