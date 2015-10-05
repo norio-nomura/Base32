@@ -820,6 +820,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
+				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Debug;
@@ -833,6 +834,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
+				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
 			name = Release;
