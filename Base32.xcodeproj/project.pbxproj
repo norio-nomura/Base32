@@ -30,6 +30,10 @@
 		6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */; };
 		6CA0A80D1A75135D00AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A8131A75138900AC539F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7F71A7507CE00AC539F /* Security.framework */; };
+		6CCCF1F31BC208C1003CE287 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6CCCF1F41BC208C7003CE287 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7EF1A74ECEE00AC539F /* Base32.swift */; };
+		6CCCF1F51BC208CA003CE287 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
+		6CCCF1F61BC208CE003CE287 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -106,6 +110,7 @@
 		6CCCF1CA1BC205D1003CE287 /* watchOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Base.xcconfig"; sourceTree = "<group>"; };
 		6CCCF1CB1BC205D1003CE287 /* watchOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-Framework.xcconfig"; sourceTree = "<group>"; };
 		6CCCF1CC1BC205D1003CE287 /* watchOS-StaticLibrary.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "watchOS-StaticLibrary.xcconfig"; sourceTree = "<group>"; };
+		6CCCF1EB1BC20835003CE287 /* Base32.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Base32.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +153,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6CCCF1E71BC20835003CE287 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -173,6 +185,7 @@
 				6CA0A7D31A74E91700AC539F /* Base32.framework */,
 				6CA0A7DD1A74E91800AC539F /* Base32-iOSTests.xctest */,
 				6CA0A8071A75135D00AC539F /* SecEncodeTransformTests.xctest */,
+				6CCCF1EB1BC20835003CE287 /* Base32.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -355,6 +368,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6CCCF1E81BC20835003CE287 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CCCF1F31BC208C1003CE287 /* Base32.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
@@ -448,6 +469,24 @@
 			productReference = 6CA0A8071A75135D00AC539F /* SecEncodeTransformTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6CCCF1EA1BC20835003CE287 /* Base32-watchOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6CCCF1F01BC20835003CE287 /* Build configuration list for PBXNativeTarget "Base32-watchOS" */;
+			buildPhases = (
+				6CCCF1E61BC20835003CE287 /* Sources */,
+				6CCCF1E71BC20835003CE287 /* Frameworks */,
+				6CCCF1E81BC20835003CE287 /* Headers */,
+				6CCCF1E91BC20835003CE287 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Base32-watchOS";
+			productName = Base32;
+			productReference = 6CCCF1EB1BC20835003CE287 /* Base32.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -474,6 +513,9 @@
 					6CA0A8061A75135D00AC539F = {
 						CreatedOnToolsVersion = 6.1.1;
 					};
+					6CCCF1EA1BC20835003CE287 = {
+						CreatedOnToolsVersion = 7.1;
+					};
 				};
 			};
 			buildConfigurationList = 6CA0A7921A74E80600AC539F /* Build configuration list for PBXProject "Base32" */;
@@ -492,6 +534,7 @@
 				6CA0A7A21A74E80600AC539F /* Base32-MacTests */,
 				6CA0A7D21A74E91700AC539F /* Base32-iOS */,
 				6CA0A7DC1A74E91800AC539F /* Base32-iOSTests */,
+				6CCCF1EA1BC20835003CE287 /* Base32-watchOS */,
 				6CA0A8061A75135D00AC539F /* SecEncodeTransformTests */,
 			);
 		};
@@ -527,6 +570,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		6CA0A8051A75135D00AC539F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CCCF1E91BC20835003CE287 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -585,6 +635,16 @@
 				6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */,
 				6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */,
 				6C122F871A85F332004FD458 /* StringExtension.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6CCCF1E61BC20835003CE287 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6CCCF1F41BC208C7003CE287 /* Base32.swift in Sources */,
+				6CCCF1F51BC208CA003CE287 /* Base16.swift in Sources */,
+				6CCCF1F61BC208CE003CE287 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -751,6 +811,90 @@
 			};
 			name = Release;
 		};
+		6CCCF1F11BC20835003CE287 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CCCF1CB1BC205D1003CE287 /* watchOS-Framework.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Base32/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		6CCCF1F21BC20835003CE287 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6CCCF1CB1BC205D1003CE287 /* watchOS-Framework.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = Base32/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -807,6 +951,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		6CCCF1F01BC20835003CE287 /* Build configuration list for PBXNativeTarget "Base32-watchOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6CCCF1F11BC20835003CE287 /* Debug */,
+				6CCCF1F21BC20835003CE287 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
