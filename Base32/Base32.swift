@@ -164,7 +164,7 @@ let alphabetEncodeTable: [Int8] = ["A","B","C","D","E","F","G","H","I","J","K","
 
 let extendedHexAlphabetEncodeTable: [Int8] = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"]
 
-private func base32encode(data: UnsafePointer<Void>, var length: Int, table: [Int8]) -> String {
+private func base32encode(data: UnsafePointer<Void>, var _ length: Int, _ table: [Int8]) -> String {
     if length == 0 {
         return ""
     }
@@ -290,15 +290,10 @@ let extendedHexAlphabetDecodeTable: [UInt8] = [
 ]
 
 
-private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
-    let length = count(string.unicodeScalars)
+private func base32decode(string: String, _ table: [UInt8]) -> [UInt8]? {
+    let length = string.unicodeScalars.count
     if length == 0 {
         return []
-    }
-    
-    // search element index that condition is true.
-    func index_of<C : CollectionType where C.Generator.Element : Equatable>(domain: C, condition: C.Generator.Element -> Bool) -> C.Index? {
-        return find(lazy(domain).map(condition), true)
     }
     
     // calc padding length
@@ -318,12 +313,12 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     
     // validate string
     let leastPaddingLength = getLeastPaddingLength(string)
-    if let index = index_of(string.unicodeScalars, {$0.value > 0xff || table[Int($0.value)] > 31}) {
+    if let index = string.unicodeScalars.indexOf({$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
-        let pos = distance(string.unicodeScalars.startIndex, index)
+        let pos = string.unicodeScalars.startIndex.distanceTo(index)
         // if pos points padding "=", it's valid.
         if pos != length - leastPaddingLength {
-            println("string contains some invalid characters.")
+            print("string contains some invalid characters.")
             return nil
         }
     }
@@ -338,7 +333,7 @@ private func base32decode(string: String, table: [UInt8]) -> [UInt8]? {
     case 5: additionalBytes = 3
     case 7: additionalBytes = 4
     default:
-        println("string length is invalid.")
+        print("string length is invalid.")
         return nil
     }
     
