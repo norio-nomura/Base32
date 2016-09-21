@@ -26,7 +26,7 @@
 
 import Foundation
 import XCTest
-import Base32
+@testable import Base32
 
 class Base16Tests: XCTestCase {
 
@@ -55,7 +55,7 @@ class Base16Tests: XCTestCase {
 
     func test_RFC4648_base16Encode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect) in convertedVectors {
                     let result = base16Encode(test)
@@ -67,7 +67,7 @@ class Base16Tests: XCTestCase {
     
     func test_RFC4648_base16Decode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (expect, test) in convertedVectors {
                     let result = base16DecodeToData(test)
@@ -80,7 +80,7 @@ class Base16Tests: XCTestCase {
     // MARK: -
     
     func test_Base16ExtensionString() {
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect) in self.vectors {
                     let result = test.base16EncodedString
@@ -99,7 +99,7 @@ class Base16Tests: XCTestCase {
                 $1.dataUsingUTF8StringEncoding
             )
         }
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect) in dataVectors {
                     let result = test.base16EncodedData
@@ -113,7 +113,7 @@ class Base16Tests: XCTestCase {
     
     func test_Base16ExtensionDataAndString() {
         let dataAndStringVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect) in dataAndStringVectors {
                     let result = test.base16EncodedString

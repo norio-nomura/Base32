@@ -26,6 +26,7 @@
 
 import Foundation
 import XCTest
+@testable import Base32
 
 class StringExtensionTests: XCTestCase {
 
@@ -41,9 +42,9 @@ class StringExtensionTests: XCTestCase {
 
     func test_dataUsingUTF8StringEncoding() {
         let emptyString = ""
-        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
 
         let string = "0112233445566778899AABBCCDDEEFFaabbccddeefff"
-        XCTAssertEqual(string.dataUsingUTF8StringEncoding, string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
+        XCTAssertEqual(string.dataUsingUTF8StringEncoding, string.data(using: .utf8, allowLossyConversion: false)!)
     }
 }

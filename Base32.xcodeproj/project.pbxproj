@@ -15,11 +15,8 @@
 		6C122F7E1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6C122F801A85E885004FD458 /* Base16Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7F1A85E885004FD458 /* Base16Tests.swift */; };
 		6C122F811A85E885004FD458 /* Base16Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7F1A85E885004FD458 /* Base16Tests.swift */; };
-		6C122F821A85EA0A004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
-		6C122F831A85EA0B004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6C122F851A85EA52004FD458 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F841A85EA52004FD458 /* StringExtensionTests.swift */; };
 		6C122F861A85EA52004FD458 /* StringExtensionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F841A85EA52004FD458 /* StringExtensionTests.swift */; };
-		6C122F871A85F332004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
 		6CA0A79E1A74E80600AC539F /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CA0A7A41A74E80600AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7AA1A74E80600AC539F /* Base32Tests.swift */; };
@@ -609,7 +606,6 @@
 				6C122F851A85EA52004FD458 /* StringExtensionTests.swift in Sources */,
 				6CA0A7AB1A74E80600AC539F /* Base32Tests.swift in Sources */,
 				6C122F801A85E885004FD458 /* Base16Tests.swift in Sources */,
-				6C122F821A85EA0A004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -630,7 +626,6 @@
 				6C122F861A85EA52004FD458 /* StringExtensionTests.swift in Sources */,
 				6CA0A7EE1A74ECD700AC539F /* Base32Tests.swift in Sources */,
 				6C122F811A85E885004FD458 /* Base16Tests.swift in Sources */,
-				6C122F831A85EA0B004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,7 +635,6 @@
 			files = (
 				6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */,
 				6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */,
-				6C122F871A85F332004FD458 /* StringExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +682,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -705,6 +700,7 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -720,7 +716,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -733,7 +729,7 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -744,7 +740,6 @@
 				INFOPLIST_FILE = Base32Tests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -755,7 +750,6 @@
 				INFOPLIST_FILE = Base32Tests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -769,7 +763,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -783,7 +776,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -794,7 +786,6 @@
 				INFOPLIST_FILE = Base32Tests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -805,7 +796,6 @@
 				INFOPLIST_FILE = Base32Tests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -817,7 +807,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -829,7 +818,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
-				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
 		};
@@ -843,7 +831,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};
@@ -859,7 +846,6 @@
 				DYLIB_CURRENT_VERSION = 1;
 				INFOPLIST_FILE = Base32/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
-				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
 			};

@@ -28,47 +28,47 @@ import Foundation
 
 // https://tools.ietf.org/html/rfc4648
 
-// MARK: - Base32 NSData <-> String
+// MARK: - Base32 Data <-> String
 
-public func base32Encode(data: NSData) -> String {
-    return base32encode(data.bytes, data.length, alphabetEncodeTable)
-}
-
-public func base32HexEncode(data: NSData) -> String {
-    return base32encode(data.bytes, data.length, extendedHexAlphabetEncodeTable)
-}
-
-public func base32DecodeToData(string: String) -> NSData? {
-    if let array = base32decode(string, alphabetDecodeTable) {
-        return NSData(bytes: array, length: array.count)
-    } else {
-        return nil
+public func base32Encode(_ data: Data) -> String {
+    return data.withUnsafeBytes {
+        base32encode(UnsafeRawPointer($0), data.count, alphabetEncodeTable)
     }
 }
 
-public func base32HexDecodeToData(string: String) -> NSData? {
-    if let array = base32decode(string, extendedHexAlphabetDecodeTable) {
-        return NSData(bytes: array, length: array.count)
-    } else {
-        return nil
+public func base32HexEncode(_ data: Data) -> String {
+    return data.withUnsafeBytes {
+        base32encode(UnsafeRawPointer($0), data.count, extendedHexAlphabetEncodeTable)
+    }
+}
+
+public func base32DecodeToData(_ string: String) -> Data? {
+    return base32decode(string, alphabetDecodeTable).flatMap {
+        Data(bytes: UnsafePointer<UInt8>($0), count: $0.count)
+    }
+}
+
+public func base32HexDecodeToData(_ string: String) -> Data? {
+    return base32decode(string, extendedHexAlphabetDecodeTable).flatMap {
+        Data(bytes: UnsafePointer<UInt8>($0), count: $0.count)
     }
 }
 
 // MARK: - Base32 [UInt8] <-> String
 
-public func base32Encode(array: [UInt8]) -> String {
+public func base32Encode(_ array: [UInt8]) -> String {
     return base32encode(array, array.count, alphabetEncodeTable)
 }
 
-public func base32HexEncode(array: [UInt8]) -> String {
+public func base32HexEncode(_ array: [UInt8]) -> String {
     return base32encode(array, array.count, extendedHexAlphabetEncodeTable)
 }
 
-public func base32Decode(string: String) -> [UInt8]? {
+public func base32Decode(_ string: String) -> [UInt8]? {
     return base32decode(string, alphabetDecodeTable)
 }
 
-public func base32HexDecode(string: String) -> [UInt8]? {
+public func base32HexDecode(_ string: String) -> [UInt8]? {
     return base32decode(string, extendedHexAlphabetDecodeTable)
 }
 
@@ -76,60 +76,52 @@ public func base32HexDecode(string: String) -> [UInt8]? {
 
 extension String {
     // base32
-    public var base32DecodedData: NSData? {
+    public var base32DecodedData: Data? {
         return base32DecodeToData(self)
     }
     
     public var base32EncodedString: String {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return base32encode($0.baseAddress, $0.count - 1, alphabetEncodeTable)
+        return utf8CString.withUnsafeBufferPointer {
+            base32encode($0.baseAddress!, $0.count - 1, alphabetEncodeTable)
         }
     }
     
-    public func base32DecodedString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
-        if let data = self.base32DecodedData {
-            return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
-        } else {
-            return nil
+    public func base32DecodedString(_ encoding: String.Encoding = .utf8) -> String? {
+        return base32DecodedData.flatMap {
+            String(data: $0, encoding: .utf8)
         }
     }
 
     // base32Hex
-    public var base32HexDecodedData: NSData? {
+    public var base32HexDecodedData: Data? {
         return base32HexDecodeToData(self)
     }
     
     public var base32HexEncodedString: String {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return base32encode($0.baseAddress, $0.count - 1, extendedHexAlphabetEncodeTable)
+        return utf8CString.withUnsafeBufferPointer {
+            base32encode($0.baseAddress!, $0.count - 1, extendedHexAlphabetEncodeTable)
         }
     }
     
-    public func base32HexDecodedString(encoding: NSStringEncoding = NSUTF8StringEncoding) -> String? {
-        if let data = self.base32HexDecodedData {
-            return NSString(data: data, encoding: NSUTF8StringEncoding) as? String
-        } else {
-            return nil
+    public func base32HexDecodedString(_ encoding: String.Encoding = .utf8) -> String? {
+        return base32HexDecodedData.flatMap {
+            String(data: $0, encoding: .utf8)
         }
     }
 }
 
-extension NSData {
+extension Data {
     // base32
     public var base32EncodedString: String {
         return base32Encode(self)
     }
     
-    public var base32EncodedData: NSData {
+    public var base32EncodedData: Data {
         return base32EncodedString.dataUsingUTF8StringEncoding
     }
     
-    public var base32DecodedData: NSData? {
-        if let string = NSString(data: self, encoding: NSUTF8StringEncoding) as? String {
-            return base32DecodeToData(string)
-        } else {
-            return nil
-        }
+    public var base32DecodedData: Data? {
+        return String(data: self, encoding: .utf8).flatMap(base32DecodeToData)
     }
 
     // base32Hex
@@ -137,16 +129,12 @@ extension NSData {
         return base32HexEncode(self)
     }
     
-    public var base32HexEncodedData: NSData {
+    public var base32HexEncodedData: Data {
         return base32HexEncodedString.dataUsingUTF8StringEncoding
     }
     
-    public var base32HexDecodedData: NSData? {
-        if let string = NSString(data: self, encoding: NSUTF8StringEncoding) as? String {
-            return base32HexDecodeToData(string)
-        } else {
-            return nil
-        }
+    public var base32HexDecodedData: Data? {
+        return String(data: self, encoding: .utf8).flatMap(base32HexDecodeToData)
     }
 }
 
@@ -154,26 +142,20 @@ extension NSData {
 
 // MARK: encode
 
-extension Int8: UnicodeScalarLiteralConvertible {
-    public init(unicodeScalarLiteral value: UnicodeScalar) {
-        self.init(value.value)
-    }
-}
+let alphabetEncodeTable: [Int8] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","2","3","4","5","6","7"].map { (c: UnicodeScalar) -> Int8 in Int8(c.value) }
 
-let alphabetEncodeTable: [Int8] = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z","2","3","4","5","6","7"]
+let extendedHexAlphabetEncodeTable: [Int8] = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"].map { (c: UnicodeScalar) -> Int8 in Int8(c.value) }
 
-let extendedHexAlphabetEncodeTable: [Int8] = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"]
-
-private func base32encode(data: UnsafePointer<Void>, _ length: Int, _ table: [Int8]) -> String {
+private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int8]) -> String {
     if length == 0 {
         return ""
     }
     var length = length
     
-    var bytes = UnsafePointer<UInt8>(data)
+    var bytes = data.assumingMemoryBound(to: UInt8.self)
     
     let resultBufferSize = Int(ceil(Double(length) / 5)) * 8 + 1    // need null termination
-    let resultBuffer = UnsafeMutablePointer<Int8>.alloc(resultBufferSize)
+    let resultBuffer = UnsafeMutablePointer<Int8>.allocate(capacity: resultBufferSize)
     var encoded = resultBuffer
     
     // encode regular blocks
@@ -187,8 +169,8 @@ private func base32encode(data: UnsafePointer<Void>, _ length: Int, _ table: [In
         encoded[6] = table[Int((bytes[3] & 0b00000011) << 3 | bytes[4] >> 5)]
         encoded[7] = table[Int((bytes[4] & 0b00011111))]
         length -= 5
-        encoded = encoded.advancedBy(8)
-        bytes = bytes.advancedBy(5)
+        encoded = encoded.advanced(by: 8)
+        bytes = bytes.advanced(by: 5)
     }
     
     // encode last block
@@ -215,24 +197,25 @@ private func base32encode(data: UnsafePointer<Void>, _ length: Int, _ table: [In
         encoded[0] = table[Int(byte0 >> 3)]
     default: break
     }
-    
+
     // padding
+    let pad = Int8(UnicodeScalar("=").value)
     switch length {
     case 0:
         encoded[0] = 0
     case 1:
-        encoded[2] = "="
-        encoded[3] = "="
+        encoded[2] = pad
+        encoded[3] = pad
         fallthrough
     case 2:
-        encoded[4] = "="
+        encoded[4] = pad
         fallthrough
     case 3:
-        encoded[5] = "="
-        encoded[6] = "="
+        encoded[5] = pad
+        encoded[6] = pad
         fallthrough
     case 4:
-        encoded[7] = "="
+        encoded[7] = pad
         fallthrough
     default:
         encoded[8] = 0
@@ -240,11 +223,11 @@ private func base32encode(data: UnsafePointer<Void>, _ length: Int, _ table: [In
     }
     
     // return
-    if let base32Encoded = String(UTF8String: resultBuffer) {
-        resultBuffer.dealloc(resultBufferSize)
+    if let base32Encoded = String(validatingUTF8: resultBuffer) {
+        resultBuffer.deallocate(capacity: resultBufferSize)
         return base32Encoded
     } else {
-        resultBuffer.dealloc(resultBufferSize)
+        resultBuffer.deallocate(capacity: resultBufferSize)
         fatalError("internal error")
     }
 }
@@ -291,14 +274,14 @@ let extendedHexAlphabetDecodeTable: [UInt8] = [
 ]
 
 
-private func base32decode(string: String, _ table: [UInt8]) -> [UInt8]? {
+private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
     let length = string.unicodeScalars.count
     if length == 0 {
         return []
     }
     
     // calc padding length
-    func getLeastPaddingLength(string: String) -> Int {
+    func getLeastPaddingLength(_ string: String) -> Int {
         if string.hasSuffix("======") {
             return 6
         } else if string.hasSuffix("====") {
@@ -314,9 +297,9 @@ private func base32decode(string: String, _ table: [UInt8]) -> [UInt8]? {
     
     // validate string
     let leastPaddingLength = getLeastPaddingLength(string)
-    if let index = string.unicodeScalars.indexOf({$0.value > 0xff || table[Int($0.value)] > 31}) {
+    if let index = string.unicodeScalars.index(where: {$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
-        let pos = string.unicodeScalars.startIndex.distanceTo(index)
+        let pos = string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: index)
         // if pos points padding "=", it's valid.
         if pos != length - leastPaddingLength {
             print("string contains some invalid characters.")
@@ -342,12 +325,12 @@ private func base32decode(string: String, _ table: [UInt8]) -> [UInt8]? {
     let dataSize = remainEncodedLength / 8 * 5 + additionalBytes
     
     // Use UnsafePointer<UInt8>
-    return string.nulTerminatedUTF8.withUnsafeBufferPointer {
-        (data: UnsafeBufferPointer<UInt8>) -> [UInt8] in
-        var encoded = data.baseAddress
+    return string.utf8CString.withUnsafeBufferPointer {
+        (data: UnsafeBufferPointer<CChar>) -> [UInt8] in
+        var encoded = data.baseAddress!
         
-        let result = Array<UInt8>(count: dataSize, repeatedValue: 0)
-        var decoded = UnsafeMutablePointer<UInt8>(result)
+        let result = Array<UInt8>(repeating: 0, count: dataSize)
+        var decoded = UnsafeMutablePointer<UInt8>(mutating: result)
         
         // decode regular blocks
         var value0, value1, value2, value3, value4, value5, value6, value7: UInt8
@@ -369,8 +352,8 @@ private func base32decode(string: String, _ table: [UInt8]) -> [UInt8]? {
             decoded[4] = value6 << 5 | value7
             
             remainEncodedLength -= 8
-            decoded = decoded.advancedBy(5)
-            encoded = encoded.advancedBy(8)
+            decoded = decoded.advanced(by: 5)
+            encoded = encoded.advanced(by: 8)
         }
         
         // decode last block

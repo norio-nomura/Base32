@@ -29,17 +29,17 @@ import Foundation
 // MARK: - private
 
 extension String {
-    /// NSData never nil
-    internal var dataUsingUTF8StringEncoding: NSData {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return NSData(bytes: $0.baseAddress, length: $0.count - 1)
+    /// Data never nil
+    internal var dataUsingUTF8StringEncoding: Data {
+        return utf8CString.withUnsafeBufferPointer {
+            return Data(bytes: $0.dropLast().map { UInt8.init($0) })
         }
     }
     
     /// Array<UInt8>
     internal var arrayUsingUTF8StringEncoding: [UInt8] {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return Array(UnsafeBufferPointer(start: $0.baseAddress, count: $0.count - 1))
+        return utf8CString.withUnsafeBufferPointer {
+            return $0.dropLast().map { UInt8.init($0) }
         }
     }
 }

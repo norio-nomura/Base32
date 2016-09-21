@@ -21,7 +21,7 @@ let vectors: [(String, String, String)] = [
     ("foobar", "MZXW6YTBOI======", "CPNMUOJ1E8======"),
 ]
 
-let convertedVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
+let convertedVectors = vectors.map {($0.data(using:.utf8)!, $1, $2)}
 
 class SecEncodeTransformTests: XCTestCase {
     
@@ -40,62 +40,62 @@ class SecEncodeTransformTests: XCTestCase {
 
     // MARK: Using SecEncodeTransform
     func test_RFC4648_Encode_UsingSecEncodeTransform() {
-        var results = Array<String>(count: convertedVectors.count, repeatedValue: "")
-        let vectorsAndIndices = Zip2Sequence(convertedVectors, results.indices)
-        self.measureBlock{
+        var results = Array<String>(repeating: "", count: convertedVectors.count)
+        let vectorsAndIndices = zip(convertedVectors, results.indices)
+        self.measure{
             for _ in 0...100 {
                 for ((test, _, _), index) in vectorsAndIndices {
                     results[index] = TTTBase32EncodedStringFromData(test)
                 }
             }
         }
-        for ((test, expect, _), result) in Zip2Sequence(convertedVectors, results) {
+        for ((test, expect, _), result) in zip(convertedVectors, results) {
             XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
         }
     }
     
     func test_RFC4648_Decode_UsingSecEncodeTransform() {
-        var results = Array<NSData>(count: convertedVectors.count, repeatedValue: NSData())
-        let vectorsAndIndices = Zip2Sequence(convertedVectors, results.indices)
-        self.measureBlock{
+        var results = Array<Data>(repeating: Data(), count: convertedVectors.count)
+        let vectorsAndIndices = zip(convertedVectors, results.indices)
+        self.measure{
             for _ in 0...100 {
                 for ((_, test, _), index) in vectorsAndIndices {
                     results[index] = TTTDataFromBase32EncodedString(test)
                 }
             }
         }
-        for ((expect, test, _), result) in Zip2Sequence(convertedVectors, results) {
+        for ((expect, test, _), result) in zip(convertedVectors, results) {
             XCTAssertEqual(result, expect, "TTTDataFromBase32EncodedString for \(test)")
         }
     }
     
     // MARK: Using Base32
     func test_RFC4648_Encode_UsingBase32() {
-        var results = Array<String>(count: convertedVectors.count, repeatedValue: "")
-        let vectorsAndIndices = Zip2Sequence(convertedVectors, results.indices)
-        self.measureBlock{
+        var results = Array<String>(repeating: "", count: convertedVectors.count)
+        let vectorsAndIndices = zip(convertedVectors, results.indices)
+        self.measure{
             for _ in 0...100 {
                 for ((test, _, _), index) in vectorsAndIndices {
                     results[index] = base32Encode(test)
                 }
             }
         }
-        for ((test, expect, _), result) in Zip2Sequence(convertedVectors, results) {
+        for ((test, expect, _), result) in zip(convertedVectors, results) {
             XCTAssertEqual(result, expect, "base32Encode for \(test)")
         }
     }
     
     func test_RFC4648_Decode_UsingBase32() {
-        var results = Array<NSData>(count: convertedVectors.count, repeatedValue: NSData())
-        let vectorsAndIndices = Zip2Sequence(convertedVectors, results.indices)
-        self.measureBlock{
+        var results = Array<Data>(repeating: Data(), count: convertedVectors.count)
+        let vectorsAndIndices = zip(convertedVectors, results.indices)
+        self.measure{
             for _ in 0...100 {
                 for ((_, test, _), index) in vectorsAndIndices {
                     results[index] = base32DecodeToData(test)!
                 }
             }
         }
-        for ((expect, test, _), result) in Zip2Sequence(convertedVectors, results) {
+        for ((expect, test, _), result) in zip(convertedVectors, results) {
             XCTAssertEqual(result, expect, "base32Decode for \(test)")
         }
     }
