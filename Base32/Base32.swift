@@ -164,10 +164,11 @@ let alphabetEncodeTable: [Int8] = ["A","B","C","D","E","F","G","H","I","J","K","
 
 let extendedHexAlphabetEncodeTable: [Int8] = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"]
 
-private func base32encode(data: UnsafePointer<Void>, var _ length: Int, _ table: [Int8]) -> String {
+private func base32encode(data: UnsafePointer<Void>, _ length: Int, _ table: [Int8]) -> String {
     if length == 0 {
         return ""
     }
+    var length = length
     
     var bytes = UnsafePointer<UInt8>(data)
     

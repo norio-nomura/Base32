@@ -132,7 +132,7 @@ private func base16decode(string: String) -> [UInt8]? {
         } else {
             return nil
         }
-        index++
+        index += 1
     }
     return buffer
 }
