@@ -1,16 +1,9 @@
 language: objective-c
 osx_image: xcode8
-cache:
-  directories:
-  - vendor/bundle
-install:
-- bundle install --path=vendor/bundle --binstubs=vendor/bin
 script:
-- bundle exec rake test:ios test:osx test:SecEncodeTransformTests
-env:
-  global:
-  - LANG=en_US.UTF-8
-  - LC_ALL=en_US.UTF-8
+- xcodebuild -project Base32.xcodeproj -scheme Base32-Mac build-for-testing test
+- xcodebuild -project Base32.xcodeproj -scheme Base32-iOS -destination "name=iPhone 7" build-for-testing test
+- xcodebuild -project Base32.xcodeproj -scheme Base32-watchOS -destination "name=Apple Watch - 38mm" build
 notifications:
   webhooks:
     secure: TKFWG5dDRlNK/XbsC7eKDEh7vnydCUYjGc1Sv9DUOfRjvxYBMq+ys8R9iHAotNNtnCdacohM0bcwT1ZXQcRTYKEd6vKtY1XkkPA2xBogLVfhu17DCDMhJ3iTtati1mMK1rVeSgseXffOKVq1ZjNGjBVCIHl0PZoj5jFiOwYKKO8=
