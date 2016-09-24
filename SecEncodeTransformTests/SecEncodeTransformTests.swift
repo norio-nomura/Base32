@@ -45,7 +45,7 @@ class SecEncodeTransformTests: XCTestCase {
         self.measure{
             for _ in 0...100 {
                 for ((test, _, _), index) in vectorsAndIndices {
-                    results[index] = TTTBase32EncodedStringFromData(test)
+                    results[index] = TTTBase32EncodedString(from: test)!
                 }
             }
         }
@@ -60,7 +60,7 @@ class SecEncodeTransformTests: XCTestCase {
         self.measure{
             for _ in 0...100 {
                 for ((_, test, _), index) in vectorsAndIndices {
-                    results[index] = TTTDataFromBase32EncodedString(test)
+                    results[index] = TTTData(fromBase32EncodedString: test)!
                 }
             }
         }

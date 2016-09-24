@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6C10E90F1A753A6C006EED90 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */; };
 		6C122F7A1A85DC1E004FD458 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
 		6C122F7B1A85DC1E004FD458 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
 		6C122F7D1A85E52C004FD458 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F7C1A85E52C004FD458 /* StringExtension.swift */; };
@@ -27,6 +26,7 @@
 		6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */; };
 		6CA0A80D1A75135D00AC539F /* Base32.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7981A74E80600AC539F /* Base32.framework */; };
 		6CA0A8131A75138900AC539F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6CA0A7F71A7507CE00AC539F /* Security.framework */; };
+		6CBCAC4B1D96CE4B00900D4C /* TTTDataTransformer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CBCAC4A1D96CE4B00900D4C /* TTTDataTransformer.swift */; };
 		6CCCF1F31BC208C1003CE287 /* Base32.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CA0A79D1A74E80600AC539F /* Base32.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CCCF1F41BC208C7003CE287 /* Base32.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA0A7EF1A74ECEE00AC539F /* Base32.swift */; };
 		6CCCF1F51BC208CA003CE287 /* Base16.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C122F791A85DC1E004FD458 /* Base16.swift */; };
@@ -58,9 +58,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		6C10E9121A7540B4006EED90 /* SecEncodeTransformTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SecEncodeTransformTests-Bridging-Header.h"; sourceTree = "<group>"; };
-		6C10E9131A7540B5006EED90 /* TTTDataTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTDataTransformer.h; sourceTree = "<group>"; };
-		6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTDataTransformer.m; sourceTree = "<group>"; };
 		6C122F791A85DC1E004FD458 /* Base16.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16.swift; sourceTree = "<group>"; };
 		6C122F7C1A85E52C004FD458 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
 		6C122F7F1A85E885004FD458 /* Base16Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Base16Tests.swift; sourceTree = "<group>"; };
@@ -99,6 +96,7 @@
 		6CA0A8071A75135D00AC539F /* SecEncodeTransformTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecEncodeTransformTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6CA0A80A1A75135D00AC539F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecEncodeTransformTests.swift; sourceTree = "<group>"; };
+		6CBCAC4A1D96CE4B00900D4C /* TTTDataTransformer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TTTDataTransformer.swift; sourceTree = "<group>"; };
 		6CCCF1C41BC205D1003CE287 /* tvOS-Application.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Application.xcconfig"; sourceTree = "<group>"; };
 		6CCCF1C51BC205D1003CE287 /* tvOS-Base.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Base.xcconfig"; sourceTree = "<group>"; };
 		6CCCF1C61BC205D1003CE287 /* tvOS-Framework.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = "tvOS-Framework.xcconfig"; sourceTree = "<group>"; };
@@ -307,11 +305,9 @@
 			isa = PBXGroup;
 			children = (
 				6CA0A80B1A75135D00AC539F /* SecEncodeTransformTests.swift */,
-				6C10E9131A7540B5006EED90 /* TTTDataTransformer.h */,
-				6C10E9141A7540B5006EED90 /* TTTDataTransformer.m */,
+				6CBCAC4A1D96CE4B00900D4C /* TTTDataTransformer.swift */,
 				6CA0A8091A75135D00AC539F /* Supporting Files */,
 				6CA0A8001A750A7F00AC539F /* Frameworks */,
-				6C10E9121A7540B4006EED90 /* SecEncodeTransformTests-Bridging-Header.h */,
 			);
 			path = SecEncodeTransformTests;
 			sourceTree = "<group>";
@@ -634,7 +630,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CA0A80C1A75135D00AC539F /* SecEncodeTransformTests.swift in Sources */,
-				6C10E91A1A754346006EED90 /* TTTDataTransformer.m in Sources */,
+				6CBCAC4B1D96CE4B00900D4C /* TTTDataTransformer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -806,7 +802,6 @@
 				INFOPLIST_FILE = SecEncodeTransformTests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -817,7 +812,6 @@
 				INFOPLIST_FILE = SecEncodeTransformTests/Info.plist;
 				PRODUCT_BUNDLE_IDENTIFIER = "io.github.norio-nomura.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "SecEncodeTransformTests/SecEncodeTransformTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
