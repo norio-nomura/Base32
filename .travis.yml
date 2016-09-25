@@ -2,9 +2,10 @@ language: objective-c
 osx_image: xcode8
 script:
 - set -o pipefail
-- xcodebuild -project Base32.xcodeproj -scheme Base32-Mac build-for-testing test | xcpretty
-- xcodebuild -project Base32.xcodeproj -scheme Base32-iOS -destination "name=iPhone 7" build-for-testing test | xcpretty
-- xcodebuild -project Base32.xcodeproj -scheme Base32-watchOS -destination "name=Apple Watch - 38mm" build | xcpretty
+- xcodebuild -scheme Base32 -sdk macosx build-for-testing test | xcpretty
+- xcodebuild -scheme Base32 -sdk iphonesimulator -destination "name=iPhone 7" build-for-testing test | xcpretty
+- xcodebuild -scheme Base32 -sdk appletvsimulator -destination "name=Apple TV 1080p" build-for-testing test | xcpretty
+- xcodebuild -scheme Base32 -sdk watchsimulator -destination "name=Apple Watch - 38mm" build | xcpretty
 notifications:
   webhooks:
     secure: TKFWG5dDRlNK/XbsC7eKDEh7vnydCUYjGc1Sv9DUOfRjvxYBMq+ys8R9iHAotNNtnCdacohM0bcwT1ZXQcRTYKEd6vKtY1XkkPA2xBogLVfhu17DCDMhJ3iTtati1mMK1rVeSgseXffOKVq1ZjNGjBVCIHl0PZoj5jFiOwYKKO8=

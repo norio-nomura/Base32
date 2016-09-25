@@ -1,8 +1,8 @@
 //
-//  Base32.h
+//  TTTDataTransformer.swift
 //  Base32
 //
-//  Created by 野村 憲男 on 1/25/15.
+//  Created by 野村 憲男 on 9/25/16.
 //
 //  Copyright (c) 2015 Norio Nomura
 //
@@ -24,14 +24,28 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+import Foundation
+import Security
 
-//! Project version number for Base32.
-FOUNDATION_EXPORT double Base32VersionNumber;
+#if os(macOS)
 
-//! Project version string for Base32.
-FOUNDATION_EXPORT const unsigned char Base32VersionString[];
+func TTTBase32EncodedString(from data: Data) -> String? {
+    if let transform = SecEncodeTransformCreate(kSecBase32Encoding, nil),
+        SecTransformSetAttribute(transform, kSecTransformInputAttributeName, data as NSData, nil),
+        let encodedData = SecTransformExecute(transform, nil) as? Data {
+        return String.init(data: encodedData, encoding: .utf8)
+    }
+    return nil
+}
 
-// In this header, you should import all the public headers of your framework using statements like #import <Base32/PublicHeader.h>
+func TTTData(fromBase32EncodedString string: String) -> Data? {
+    if let data = string.data(using: .utf8) as NSData?,
+        let transform = SecDecodeTransformCreate(kSecBase32Encoding, nil),
+        SecTransformSetAttribute(transform, kSecTransformInputAttributeName, data, nil),
+        let decodedData = SecTransformExecute(transform, nil) as? Data {
+        return decodedData
+    }
+    return nil
+}
 
-
+#endif

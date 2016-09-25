@@ -24,51 +24,59 @@ let vectors: [(String, String, String)] = [
 let convertedVectors = vectors.map {($0.data(using:.utf8)!, $1, $2)}
 
 class SecEncodeTransformTests: XCTestCase {
-    
-    
+
+
     override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
-    
+
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
-    
+
     // MARK: https://tools.ietf.org/html/rfc4648
 
     // MARK: Using SecEncodeTransform
     func test_RFC4648_Encode_UsingSecEncodeTransform() {
-        var results = Array<String>(repeating: "", count: convertedVectors.count)
-        let vectorsAndIndices = zip(convertedVectors, results.indices)
-        self.measure{
-            for _ in 0...100 {
-                for ((test, _, _), index) in vectorsAndIndices {
-                    results[index] = TTTBase32EncodedString(from: test)!
+        #if os(macOS)
+            var results = Array<String>(repeating: "", count: convertedVectors.count)
+            let vectorsAndIndices = zip(convertedVectors, results.indices)
+            self.measure{
+                for _ in 0...100 {
+                    for ((test, _, _), index) in vectorsAndIndices {
+                        results[index] = TTTBase32EncodedString(from: test)!
+                    }
                 }
             }
-        }
-        for ((test, expect, _), result) in zip(convertedVectors, results) {
-            XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
-        }
+            for ((test, expect, _), result) in zip(convertedVectors, results) {
+                XCTAssertEqual(result, expect, "TTTBase32EncodedStringFromData for \(test)")
+            }
+        #else
+            print("\(#function) is available on macOS")
+        #endif
     }
-    
+
     func test_RFC4648_Decode_UsingSecEncodeTransform() {
-        var results = Array<Data>(repeating: Data(), count: convertedVectors.count)
-        let vectorsAndIndices = zip(convertedVectors, results.indices)
-        self.measure{
-            for _ in 0...100 {
-                for ((_, test, _), index) in vectorsAndIndices {
-                    results[index] = TTTData(fromBase32EncodedString: test)!
+        #if os(macOS)
+            var results = Array<Data>(repeating: Data(), count: convertedVectors.count)
+            let vectorsAndIndices = zip(convertedVectors, results.indices)
+            self.measure{
+                for _ in 0...100 {
+                    for ((_, test, _), index) in vectorsAndIndices {
+                        results[index] = TTTData(fromBase32EncodedString: test)!
+                    }
                 }
             }
-        }
-        for ((expect, test, _), result) in zip(convertedVectors, results) {
-            XCTAssertEqual(result, expect, "TTTDataFromBase32EncodedString for \(test)")
-        }
+            for ((expect, test, _), result) in zip(convertedVectors, results) {
+                XCTAssertEqual(result, expect, "TTTDataFromBase32EncodedString for \(test)")
+            }
+        #else
+            print("\(#function) is available on macOS")
+        #endif
     }
-    
+
     // MARK: Using Base32
     func test_RFC4648_Encode_UsingBase32() {
         var results = Array<String>(repeating: "", count: convertedVectors.count)
@@ -84,7 +92,7 @@ class SecEncodeTransformTests: XCTestCase {
             XCTAssertEqual(result, expect, "base32Encode for \(test)")
         }
     }
-    
+
     func test_RFC4648_Decode_UsingBase32() {
         var results = Array<Data>(repeating: Data(), count: convertedVectors.count)
         let vectorsAndIndices = zip(convertedVectors, results.indices)
