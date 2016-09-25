@@ -6,6 +6,7 @@ script:
 - xcodebuild -scheme Base32 -sdk iphonesimulator -destination "name=iPhone 7" build-for-testing test | xcpretty
 - xcodebuild -scheme Base32 -sdk appletvsimulator -destination "name=Apple TV 1080p" build-for-testing test | xcpretty
 - xcodebuild -scheme Base32 -sdk watchsimulator -destination "name=Apple Watch - 38mm" build | xcpretty
+- swift build && swift test
 notifications:
   webhooks:
     secure: TKFWG5dDRlNK/XbsC7eKDEh7vnydCUYjGc1Sv9DUOfRjvxYBMq+ys8R9iHAotNNtnCdacohM0bcwT1ZXQcRTYKEd6vKtY1XkkPA2xBogLVfhu17DCDMhJ3iTtati1mMK1rVeSgseXffOKVq1ZjNGjBVCIHl0PZoj5jFiOwYKKO8=
