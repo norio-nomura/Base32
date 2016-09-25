@@ -26,7 +26,7 @@
 
 import Foundation
 import XCTest
-import Base32
+@testable import Base32
 
 class Base32Tests: XCTestCase {
     
@@ -54,7 +54,7 @@ class Base32Tests: XCTestCase {
     
     func test_RFC4648_base32Encode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect, _) in convertedVectors {
                     let result = base32Encode(test)
@@ -66,7 +66,7 @@ class Base32Tests: XCTestCase {
     
     func test_RFC4648_base32Decode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (expect, test, _) in convertedVectors {
                     let result = base32DecodeToData(test)
@@ -78,7 +78,7 @@ class Base32Tests: XCTestCase {
     
     func test_RFC4648_base32HexEncode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, _, expectHex) in convertedVectors {
                     let resultHex = base32HexEncode(test)
@@ -90,7 +90,7 @@ class Base32Tests: XCTestCase {
     
     func test_RFC4648_base32HexDecode() {
         let convertedVectors = self.vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (expect, _, testHex) in convertedVectors {
                     let resultHex = base32HexDecodeToData(testHex)
@@ -103,7 +103,7 @@ class Base32Tests: XCTestCase {
     // MARK: -
     
     func test_base32ExtensionString() {
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect, expectHex) in self.vectors {
                     let result = test.base32EncodedString
@@ -127,7 +127,7 @@ class Base32Tests: XCTestCase {
                 $2.dataUsingUTF8StringEncoding
             )
         }
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect, expectHex) in dataVectors {
                     let result = test.base32EncodedData
@@ -145,7 +145,7 @@ class Base32Tests: XCTestCase {
     
     func test_base32ExtensionDataAndString() {
         let dataAndStringVectors = vectors.map {($0.dataUsingUTF8StringEncoding, $1, $2)}
-        self.measureBlock{
+        self.measure{
             for _ in 0...100 {
                 for (test, expect, expectHex) in dataAndStringVectors {
                     let result = test.base32EncodedString
@@ -168,8 +168,8 @@ class Base32Tests: XCTestCase {
         let strippedVectors = vectors.map {
             (
                 $0.dataUsingUTF8StringEncoding,
-                $1.stringByReplacingOccurrencesOfString("=", withString:""),
-                $2.stringByReplacingOccurrencesOfString("=", withString:"")
+                $1.replacingOccurrences(of: "=", with:""),
+                $2.replacingOccurrences(of: "=", with:"")
             )
         }
         for (expect, test, testHex) in strippedVectors {
@@ -196,8 +196,8 @@ class Base32Tests: XCTestCase {
         // invalid length string without padding
         let invalidVectorWithoutPaddings = invalidVectorWithPaddings.map {
             (
-                $0.stringByReplacingOccurrencesOfString("=", withString:""),
-                $1.stringByReplacingOccurrencesOfString("=", withString:"")
+                $0.replacingOccurrences(of: "=", with:""),
+                $1.replacingOccurrences(of: "=", with:"")
             )
         }
         for (test, testHex) in invalidVectorWithoutPaddings {

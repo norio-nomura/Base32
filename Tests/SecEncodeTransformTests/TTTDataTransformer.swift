@@ -1,8 +1,8 @@
 //
-//  StringExtensionTests.swift
+//  TTTDataTransformer.swift
 //  Base32
 //
-//  Created by 野村 憲男 on 2/7/15.
+//  Created by 野村 憲男 on 9/25/16.
 //
 //  Copyright (c) 2015 Norio Nomura
 //
@@ -25,25 +25,27 @@
 //  THE SOFTWARE.
 
 import Foundation
-import XCTest
+import Security
 
-class StringExtensionTests: XCTestCase {
+#if os(macOS)
 
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+func TTTBase32EncodedString(from data: Data) -> String? {
+    if let transform = SecEncodeTransformCreate(kSecBase32Encoding, nil),
+        SecTransformSetAttribute(transform, kSecTransformInputAttributeName, data as NSData, nil),
+        let encodedData = SecTransformExecute(transform, nil) as? Data {
+        return String.init(data: encodedData, encoding: .utf8)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-
-    func test_dataUsingUTF8StringEncoding() {
-        let emptyString = ""
-        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-
-        let string = "0112233445566778899AABBCCDDEEFFaabbccddeefff"
-        XCTAssertEqual(string.dataUsingUTF8StringEncoding, string.dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: false)!)
-    }
+    return nil
 }
+
+func TTTData(fromBase32EncodedString string: String) -> Data? {
+    if let data = string.data(using: .utf8) as NSData?,
+        let transform = SecDecodeTransformCreate(kSecBase32Encoding, nil),
+        SecTransformSetAttribute(transform, kSecTransformInputAttributeName, data, nil),
+        let decodedData = SecTransformExecute(transform, nil) as? Data {
+        return decodedData
+    }
+    return nil
+}
+
+#endif

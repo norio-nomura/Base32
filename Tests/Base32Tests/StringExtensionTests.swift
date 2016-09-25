@@ -1,5 +1,5 @@
 //
-//  StringExtension.swift
+//  StringExtensionTests.swift
 //  Base32
 //
 //  Created by 野村 憲男 on 2/7/15.
@@ -25,21 +25,26 @@
 //  THE SOFTWARE.
 
 import Foundation
+import XCTest
+@testable import Base32
 
-// MARK: - private
+class StringExtensionTests: XCTestCase {
 
-extension String {
-    /// NSData never nil
-    internal var dataUsingUTF8StringEncoding: NSData {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return NSData(bytes: $0.baseAddress, length: $0.count - 1)
-        }
+    override func setUp() {
+        super.setUp()
+        // Put setup code here. This method is called before the invocation of each test method in the class.
     }
     
-    /// Array<UInt8>
-    internal var arrayUsingUTF8StringEncoding: [UInt8] {
-        return nulTerminatedUTF8.withUnsafeBufferPointer {
-            return Array(UnsafeBufferPointer(start: $0.baseAddress, count: $0.count - 1))
-        }
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+
+    func test_dataUsingUTF8StringEncoding() {
+        let emptyString = ""
+        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
+
+        let string = "0112233445566778899AABBCCDDEEFFaabbccddeefff"
+        XCTAssertEqual(string.dataUsingUTF8StringEncoding, string.data(using: .utf8, allowLossyConversion: false)!)
     }
 }

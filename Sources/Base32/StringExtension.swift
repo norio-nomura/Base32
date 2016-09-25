@@ -1,8 +1,8 @@
 //
-//  Base32.h
+//  StringExtension.swift
 //  Base32
 //
-//  Created by 野村 憲男 on 1/25/15.
+//  Created by 野村 憲男 on 2/7/15.
 //
 //  Copyright (c) 2015 Norio Nomura
 //
@@ -24,14 +24,22 @@
 //  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 //  THE SOFTWARE.
 
-#import <Foundation/Foundation.h>
+import Foundation
 
-//! Project version number for Base32.
-FOUNDATION_EXPORT double Base32VersionNumber;
+// MARK: - private
 
-//! Project version string for Base32.
-FOUNDATION_EXPORT const unsigned char Base32VersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <Base32/PublicHeader.h>
-
-
+extension String {
+    /// Data never nil
+    internal var dataUsingUTF8StringEncoding: Data {
+        return utf8CString.withUnsafeBufferPointer {
+            return Data(bytes: $0.dropLast().map { UInt8.init($0) })
+        }
+    }
+    
+    /// Array<UInt8>
+    internal var arrayUsingUTF8StringEncoding: [UInt8] {
+        return utf8CString.withUnsafeBufferPointer {
+            return $0.dropLast().map { UInt8.init($0) }
+        }
+    }
+}
