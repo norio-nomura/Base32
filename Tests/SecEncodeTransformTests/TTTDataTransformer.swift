@@ -27,6 +27,8 @@
 import Foundation
 import Security
 
+#if os(macOS)
+
 func TTTBase32EncodedString(from data: Data) -> String? {
     if let transform = SecEncodeTransformCreate(kSecBase32Encoding, nil),
         SecTransformSetAttribute(transform, kSecTransformInputAttributeName, data as NSData, nil),
@@ -43,6 +45,7 @@ func TTTData(fromBase32EncodedString string: String) -> Data? {
         let decodedData = SecTransformExecute(transform, nil) as? Data {
         return decodedData
     }
-    return nil    
+    return nil
 }
 
+#endif
