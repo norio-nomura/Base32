@@ -8,7 +8,9 @@ Base32 is a [Base32](https://tools.ietf.org/html/rfc4648) implementation for Swi
 ## Requirements
 
 * iOS 8 or later
-* OS X 10.9 or later
+* macOS 10.9 or later
+* tvOS 9 or later
+* watchOS 2 or later
 
 ## Installation
 
