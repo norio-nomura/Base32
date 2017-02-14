@@ -41,10 +41,25 @@ class StringExtensionTests: XCTestCase {
     }
 
     func test_dataUsingUTF8StringEncoding() {
-        let emptyString = ""
-        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
-
         let string = "0112233445566778899AABBCCDDEEFFaabbccddeefff"
         XCTAssertEqual(string.dataUsingUTF8StringEncoding, string.data(using: .utf8, allowLossyConversion: false)!)
+    }
+
+    func test_dataUsingUTF8StringEncoding_empty() {
+        #if !os(Linux) || (os(Linux) && swift(>=3.1))
+            let emptyString = ""
+            XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
+        #else
+            print("\(#function) is skipped because that crashes on Swift 3.0.2 for Linux.")
+        #endif
+    }
+}
+
+extension StringExtensionTests {
+    static var allTests: [(String, (StringExtensionTests) -> () throws -> Void)] {
+        return [
+            ("test_dataUsingUTF8StringEncoding", test_dataUsingUTF8StringEncoding),
+            ("test_dataUsingUTF8StringEncoding_empty", test_dataUsingUTF8StringEncoding_empty),
+        ]
     }
 }

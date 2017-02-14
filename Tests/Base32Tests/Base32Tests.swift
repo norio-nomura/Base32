@@ -208,3 +208,18 @@ class Base32Tests: XCTestCase {
         }
     }
 }
+
+extension Base32Tests {
+    static var allTests: [(String, (Base32Tests) -> () throws -> Void)] {
+        return [
+            ("test_RFC4648_base32Encode", test_RFC4648_base32Encode),
+            ("test_RFC4648_base32Decode", test_RFC4648_base32Decode),
+            ("test_RFC4648_base32HexEncode", test_RFC4648_base32HexEncode),
+            ("test_RFC4648_base32HexDecode", test_RFC4648_base32HexDecode),
+            ("test_base32ExtensionString", test_base32ExtensionString),
+            ("test_base32ExtensionData", test_base32ExtensionData),
+            ("test_base32ExtensionDataAndString", test_base32ExtensionDataAndString),
+            ("test_base32DecodeStringAcceptableLengthPatterns", test_base32DecodeStringAcceptableLengthPatterns),
+        ]
+    }
+}

@@ -137,3 +137,16 @@ class Base16Tests: XCTestCase {
         XCTAssertEqual(encodedFromData, lowercaseDataString)
     }
 }
+
+extension Base16Tests {
+    static var allTests: [(String, (Base16Tests) -> () throws -> Void)] {
+        return [
+            ("test_RFC4648_base16Encode", test_RFC4648_base16Encode),
+            ("test_RFC4648_base16Decode", test_RFC4648_base16Decode),
+            ("test_Base16ExtensionString", test_Base16ExtensionString),
+            ("test_Base16ExtensionData", test_Base16ExtensionData),
+            ("test_Base16ExtensionDataAndString", test_Base16ExtensionDataAndString),
+            ("test_lowercase", test_lowercase),
+        ]
+    }
+}
