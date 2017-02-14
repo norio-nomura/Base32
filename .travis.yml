@@ -11,6 +11,8 @@ matrix:
     env: JOB=macOS
     os: osx
     osx_image: xcode8.2
+    before_install:
+      - xcrun simctl delete E40727B3-41FB-4D6E-B4CB-BFA87109EB12
   - script: docker run -v `pwd`:`pwd` -w `pwd` norionomura/sourcekit:302 swift test
     env: JOB=Linux-Swift3.0.2
     sudo: required
