@@ -8,6 +8,7 @@ matrix:
     - xcodebuild -scheme Base32 test -destination "name=Apple TV 1080p" | xcpretty
     - xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm" | xcpretty
     - swift test
+    - pod lib lint
     env: JOB=macOS
     os: osx
     osx_image: xcode8.2
