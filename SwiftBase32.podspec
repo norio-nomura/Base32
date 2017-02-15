@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name                      = 'Base32'
+  s.name                      = 'SwiftBase32'
   s.version                   = '0.5.2'
   s.summary                   = 'Base32 implementation for Swift.'
   s.homepage                  = 'https://github.com/norio-nomura/Base32'
