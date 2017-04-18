@@ -3,22 +3,33 @@ matrix:
   include:
   - script:
     - set -o pipefail
-    - xcodebuild -scheme Base32 test | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=iPhone 7" | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=Apple TV 1080p" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p" | xcpretty
     - xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm" | xcpretty
     - swift test
     - pod lib lint
-    env: JOB=macOS
+    env: JOB=macOS-Swift3.0.2
     os: osx
     osx_image: xcode8.2
+  - script:
+    - set -o pipefail
+    - xcodebuild -scheme Base32 build-for-testing test-without-building | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p" | xcpretty
+    - xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm" | xcpretty
+    - swift test
+    - pod lib lint
+    env: JOB=macOS-Swift3.1
+    os: osx
+    osx_image: xcode8.3
     before_install:
-      - xcrun simctl delete E40727B3-41FB-4D6E-B4CB-BFA87109EB12
-  - script: docker run -v `pwd`:`pwd` -w `pwd` norionomura/sourcekit:302 swift test
+      - xcrun simctl delete 38C891AB-EC79-43E4-9311-6FDEB12DCF11 || true
+  - script: docker run -v `pwd`:`pwd` -w `pwd` swift:3.0.2 swift test
     env: JOB=Linux-Swift3.0.2
     sudo: required
     services: docker
-  - script: docker run -v `pwd`:`pwd` -w `pwd` norionomura/sourcekit:3120170211a swift test
+  - script: docker run -v `pwd`:`pwd` -w `pwd` swift:3.1 swift test
     env: JOB=Linux-Swift3.1
     sudo: required
     services: docker

@@ -362,25 +362,34 @@ private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
         case 7:
             value6 = table[Int(encoded[6])]
             value5 = table[Int(encoded[5])]
-            decoded[4] = value6 << 5 | value7
             fallthrough
         case 5:
             value4 = table[Int(encoded[4])]
-            decoded[3] = value4 << 7 | value5 << 2 | value6 >> 3
             fallthrough
         case 4:
             value3 = table[Int(encoded[3])]
             value2 = table[Int(encoded[2])]
-            decoded[2] = value3 << 4 | value4 >> 1
             fallthrough
         case 2:
             value1 = table[Int(encoded[1])]
             value0 = table[Int(encoded[0])]
+        default: break
+        }
+        switch remainEncodedLength {
+        case 7:
+            decoded[3] = value4 << 7 | value5 << 2 | value6 >> 3
+            fallthrough
+        case 5:
+            decoded[2] = value3 << 4 | value4 >> 1
+            fallthrough
+        case 4:
             decoded[1] = value1 << 6 | value2 << 1 | value3 >> 4
+            fallthrough
+        case 2:
             decoded[0] = value0 << 3 | value1 >> 2
         default: break
         }
-        
+
         return result
     }
 }
