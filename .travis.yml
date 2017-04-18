@@ -3,9 +3,9 @@ matrix:
   include:
   - script:
     - set -o pipefail
-    - xcodebuild -scheme Base32 test | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=iPhone 7" | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=Apple TV 1080p" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p" | xcpretty
     - xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm" | xcpretty
     - swift test
     - pod lib lint
@@ -14,9 +14,9 @@ matrix:
     osx_image: xcode8.2
   - script:
     - set -o pipefail
-    - xcodebuild -scheme Base32 test | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=iPhone 7" | xcpretty
-    - xcodebuild -scheme Base32 test -destination "name=Apple TV 1080p" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7" | xcpretty
+    - xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p" | xcpretty
     - xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm" | xcpretty
     - swift test
     - pod lib lint
