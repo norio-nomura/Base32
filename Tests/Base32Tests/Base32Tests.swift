@@ -207,6 +207,15 @@ class Base32Tests: XCTestCase {
             XCTAssertNil(resultHex, "base32HexDecode for \(test)")
         }
     }
+
+    func testBase32Decode() {
+        self.measure{
+            let b32 = "AY22KLPRBYJXNH6TRM4I3LPBYA======"
+            for _ in 0...100 {
+                _ = b32.base32DecodedData
+            }
+        }
+    }
 }
 
 extension Base32Tests {
@@ -220,6 +229,7 @@ extension Base32Tests {
             ("test_base32ExtensionData", test_base32ExtensionData),
             ("test_base32ExtensionDataAndString", test_base32ExtensionDataAndString),
             ("test_base32DecodeStringAcceptableLengthPatterns", test_base32DecodeStringAcceptableLengthPatterns),
+            ("testBase32Decode", testBase32Decode)
         ]
     }
 }
