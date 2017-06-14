@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name                      = 'SwiftBase32'
-  s.version                   = '0.5.3'
+  s.version                   = '0.5.4'
   s.summary                   = 'Base32 implementation for Swift.'
   s.homepage                  = 'https://github.com/norio-nomura/Base32'
   s.source                    = { :git => s.homepage + '.git', :tag => s.version }
