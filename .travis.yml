@@ -33,6 +33,11 @@ matrix:
     env: JOB=Linux-Swift3.1
     sudo: required
     services: docker
+  - script: ls -la /usr/lib/
+    os: linux
+    language: generic
+    dist: trusty
+
 notifications:
   webhooks:
     secure: TKFWG5dDRlNK/XbsC7eKDEh7vnydCUYjGc1Sv9DUOfRjvxYBMq+ys8R9iHAotNNtnCdacohM0bcwT1ZXQcRTYKEd6vKtY1XkkPA2xBogLVfhu17DCDMhJ3iTtati1mMK1rVeSgseXffOKVq1ZjNGjBVCIHl0PZoj5jFiOwYKKO8=
