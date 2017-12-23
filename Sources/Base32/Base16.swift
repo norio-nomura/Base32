@@ -95,8 +95,8 @@ extension UnicodeScalar {
     fileprivate var hexToUInt8: UInt8? {
         switch self {
         case "0"..."9": return UInt8(value - UnicodeScalar("0").value)
-        case "a"..."f": return 0xa + UInt8(value - UnicodeScalar("a").value)
-        case "A"..."F": return 0xa + UInt8(value - UnicodeScalar("A").value)
+        case "a"..."f": return UInt8(0xa) + UInt8(value - UnicodeScalar("a").value)
+        case "A"..."F": return UInt8(0xa) + UInt8(value - UnicodeScalar("A").value)
         default:
             print("base16decode: Invalid hex character \(self)")
             return nil
