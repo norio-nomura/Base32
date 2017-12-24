@@ -12,13 +12,12 @@ aliases:
 
   - &steps-for-xcode-8
     - checkout
-    - run:
-        command: |
-          ( xcodebuild -scheme Base32 build-for-testing test-without-building # -sdk macosx -destination arch=x86_64
-            xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7"
-            xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p"
-            xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm"
-          ) | xcpretty -r junit
+    - run: |
+        ( xcodebuild -scheme Base32 build-for-testing test-without-building # -sdk macosx -destination arch=x86_64
+          xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7"
+          xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p"
+          xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm"
+        ) | xcpretty -r junit
     - store_test_results: *store-test-results
     - restore_cache: *restore-cocoapods-cache
     - run: pod lib lint
@@ -26,14 +25,13 @@ aliases:
 
   - &steps-for-xcode-9
     - checkout
-    - run:
-        command: |
-          ( export XCODE_FLAGS="-scheme Base32 SWIFT_VERSION=${SWIFT_VERSION}"
-            xcodebuild ${XCODE_FLAGS} test # -sdk macosx -destination arch=x86_64
-            xcodebuild ${XCODE_FLAGS} test -sdk iphonesimulator -destination "name=iPhone 8"
-            xcodebuild ${XCODE_FLAGS} test -sdk appletvsimulator -destination "name=Apple TV 4K"
-            xcodebuild ${XCODE_FLAGS} build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm"
-          ) | xcpretty -r junit
+    - run: |
+        ( export XCODE_FLAGS="-scheme Base32 SWIFT_VERSION=${SWIFT_VERSION}"
+          xcodebuild ${XCODE_FLAGS} test # -sdk macosx -destination arch=x86_64
+          xcodebuild ${XCODE_FLAGS} test -sdk iphonesimulator -destination "name=iPhone 8"
+          xcodebuild ${XCODE_FLAGS} test -sdk appletvsimulator -destination "name=Apple TV 4K"
+          xcodebuild ${XCODE_FLAGS} build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm"
+        ) | xcpretty -r junit
     - store_test_results: *store-test-results
     - restore_cache: *restore-cocoapods-cache
     - run: pod lib lint --swift-version=${SWIFT_VERSION}
