@@ -36,6 +36,7 @@ aliases:
     - restore_cache: *restore-cocoapods-cache
     - run: pod lib lint --swift-version=${SWIFT_VERSION}
     - save_cache: *save-cocoapods-cache
+    - run: bash <(curl -s https://codecov.io/bash)
 
   - &steps-for-spm
     - checkout
