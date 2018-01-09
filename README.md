@@ -2,6 +2,7 @@
 [![MIT License](http://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![CI Status](http://img.shields.io/travis/norio-nomura/Base32.svg?style=flat)](https://travis-ci.org/norio-nomura/Base32)
+[![codecov](https://codecov.io/gh/norio-nomura/Base32/branch/master/graph/badge.svg)](https://codecov.io/gh/norio-nomura/Base32)
 
 Base32 is a [Base32](https://tools.ietf.org/html/rfc4648) implementation for Swift.
 
