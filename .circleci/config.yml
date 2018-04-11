@@ -35,6 +35,11 @@ jobs:
       xcode: "9.2.0"
     <<: *xcode-9
 
+  xcode_9.3_swift_4.1:
+    macos:
+      xcode: "9.3.0"
+    <<: *xcode-9
+
   spm_swift_4:
     macos:
       xcode: "9.0"
@@ -48,6 +53,11 @@ jobs:
   spm_swift_4.0.3:
     macos:
       xcode: "9.2.0"
+    steps: *steps-for-spm
+
+  spm_swift_4.1:
+    macos:
+      xcode: "9.3.0"
     steps: *steps-for-spm
 
   linux_swift_4:
@@ -65,6 +75,11 @@ jobs:
       - image: norionomura/swift:403
     steps: *steps-for-spm
 
+  linux_swift_4.1:
+    docker:
+      - image: norionomura/swift:41
+    steps: *steps-for-spm
+
 workflows:
   version: 2
   workflow:
@@ -72,9 +87,12 @@ workflows:
       - xcode_9_swift_4
       - xcode_9.1_swift_4.0.2
       - xcode_9.2_swift_4.0.3
+      - xcode_9.3_swift_4.1
       - spm_swift_4
       - spm_swift_4.0.2
       - spm_swift_4.0.3
+      - spm_swift_4.1
       - linux_swift_4
       - linux_swift_4.0.2
       - linux_swift_4.0.3
+      - linux_swift_4.1
