@@ -1,42 +1,17 @@
 aliases:
-  - &store-test-results
-    path: build/reports/
-
-  - &restore-cocoapods-cache
-    key: cocoapods
-
-  - &save-cocoapods-cache
-    key: cocoapods
-    paths:
-      - ~/.cocoapods
-
-  - &steps-for-xcode-8
-    - checkout
-    - run: |
-        ( xcodebuild -scheme Base32 build-for-testing test-without-building # -sdk macosx -destination arch=x86_64
-          xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=iPhone 7"
-          xcodebuild -scheme Base32 build-for-testing test-without-building -destination "name=Apple TV 1080p"
-          xcodebuild -scheme Base32 build -destination "name=Apple Watch - 38mm"
-        ) | xcpretty -r junit
-    - store_test_results: *store-test-results
-    - restore_cache: *restore-cocoapods-cache
-    - run: pod lib lint
-    - save_cache: *save-cocoapods-cache
-
-  - &steps-for-xcode-9
-    - checkout
-    - run: |
-        ( export XCODE_FLAGS="-scheme Base32 SWIFT_VERSION=${SWIFT_VERSION}"
-          xcodebuild ${XCODE_FLAGS} test # -sdk macosx -destination arch=x86_64
-          xcodebuild ${XCODE_FLAGS} test -sdk iphonesimulator -destination "name=iPhone 8"
-          xcodebuild ${XCODE_FLAGS} test -sdk appletvsimulator -destination "name=Apple TV 4K"
-          xcodebuild ${XCODE_FLAGS} build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm"
-        ) | xcpretty -r junit
-    - store_test_results: *store-test-results
-    - restore_cache: *restore-cocoapods-cache
-    - run: pod lib lint --swift-version=${SWIFT_VERSION}
-    - save_cache: *save-cocoapods-cache
-    - run: bash <(curl -s https://codecov.io/bash)
+  - &xcode-9
+    steps:
+      - checkout
+      - run: |
+          ( xcodebuild -scheme Base32 test # -sdk macosx -destination arch=x86_64
+            xcodebuild -scheme Base32 test -sdk iphonesimulator -destination "name=iPhone 8"
+            xcodebuild -scheme Base32 test -sdk appletvsimulator -destination "name=Apple TV 4K"
+            xcodebuild -scheme Base32 build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm"
+          ) | xcpretty -r junit
+      - store_test_results:
+          path: build/reports/
+      - run: pod lib lint
+      - run: bash <(curl -s https://codecov.io/bash)
 
   - &steps-for-spm
     - checkout
@@ -45,43 +20,20 @@ aliases:
 version: 2
 jobs:
 
-  xcode_8.3.3:
-    macos:
-      xcode: "8.3.3"
-    steps: *steps-for-xcode-8
-
-  xcode_9_swift_3:
-    macos:
-      xcode: "9.0"
-    environment:
-      - SWIFT_VERSION: 3.0
-    steps: *steps-for-xcode-9
-
   xcode_9_swift_4:
     macos:
       xcode: "9.0"
-    environment:
-      - SWIFT_VERSION: 4.0
-    steps: *steps-for-xcode-9
+    <<: *xcode-9
 
   xcode_9.1_swift_4.0.2:
     macos:
       xcode: "9.1.0"
-    environment:
-      - SWIFT_VERSION: 4.0
-    steps: *steps-for-xcode-9
+    <<: *xcode-9
 
   xcode_9.2_swift_4.0.3:
     macos:
       xcode: "9.2.0"
-    environment:
-      - SWIFT_VERSION: 4.0
-    steps: *steps-for-xcode-9
-
-  spm_swift_3.1.1:
-    macos:
-      xcode: "8.3.3"
-    steps: *steps-for-spm
+    <<: *xcode-9
 
   spm_swift_4:
     macos:
@@ -96,11 +48,6 @@ jobs:
   spm_swift_4.0.3:
     macos:
       xcode: "9.2.0"
-    steps: *steps-for-spm
-
-  linux_swift_3.1.1:
-    docker:
-      - image: norionomura/swift:311
     steps: *steps-for-spm
 
   linux_swift_4:
@@ -122,16 +69,12 @@ workflows:
   version: 2
   workflow:
     jobs:
-      - xcode_8.3.3
-      - xcode_9_swift_3
       - xcode_9_swift_4
       - xcode_9.1_swift_4.0.2
       - xcode_9.2_swift_4.0.3
-      - spm_swift_3.1.1
       - spm_swift_4
       - spm_swift_4.0.2
       - spm_swift_4.0.3
-      - linux_swift_3.1.1
       - linux_swift_4
       - linux_swift_4.0.2
       - linux_swift_4.0.3

@@ -46,12 +46,8 @@ class StringExtensionTests: XCTestCase {
     }
 
     func test_dataUsingUTF8StringEncoding_empty() {
-        #if !os(Linux) || (os(Linux) && swift(>=3.1))
-            let emptyString = ""
-            XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
-        #else
-            print("\(#function) is skipped because that crashes on Swift 3.0.2 for Linux.")
-        #endif
+        let emptyString = ""
+        XCTAssertEqual(emptyString.dataUsingUTF8StringEncoding, emptyString.data(using: .utf8, allowLossyConversion: false)!)
     }
 }
 
