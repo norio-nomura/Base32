@@ -1,5 +1,6 @@
 aliases:
   - &xcode-9
+    shell: /bin/bash --login -eo pipefail
     steps:
       - checkout
       - run: |
@@ -10,6 +11,7 @@ aliases:
           ) | xcpretty -r junit
       - store_test_results:
           path: build/reports/
+      - run: echo "ruby-2.3" > ~/.ruby-version
       - run: pod lib lint
       - run: bash <(curl -s https://codecov.io/bash)
 
