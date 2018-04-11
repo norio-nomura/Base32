@@ -224,10 +224,18 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     
     // return
     if let base32Encoded = String(validatingUTF8: resultBuffer) {
+#if swift(>=4.1)
+        resultBuffer.deallocate()
+#else
         resultBuffer.deallocate(capacity: resultBufferSize)
+#endif
         return base32Encoded
     } else {
+#if swift(>=4.1)
+        resultBuffer.deallocate()
+#else
         resultBuffer.deallocate(capacity: resultBufferSize)
+#endif
         fatalError("internal error")
     }
 }
