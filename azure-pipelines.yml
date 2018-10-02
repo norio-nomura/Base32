@@ -61,7 +61,7 @@ jobs:
         testResultsFiles: build/reports/**
       condition: succeededOrFailed()
 
-- job: pod lib lint
+- job: pod_lib_lint
   pool:
     vmImage: 'macOS-10.13'
   variables:
