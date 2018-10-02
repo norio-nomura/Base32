@@ -55,11 +55,17 @@ jobs:
         xcpretty -r junit -o build/reports/swift-test.xml
       displayName: swift test
       condition: succeededOrFailed()
-    - script: pod lib lint
-      displayName: pod lib lint
-      condition: eq(variables['POD_LIB_LINT'], 'true')
     - task: PublishTestResults@2
       inputs:
         testRunner: JUnit
         testResultsFiles: build/reports/**
       condition: succeededOrFailed()
+
+- job: pod lib lint
+  pool:
+    vmImage: 'macOS-10.13'
+  variables:
+    DEVELOPER_DIR: '/Applications/Xcode_9.4.1.app'
+  steps:
+    - script: pod lib lint
+      displayName: pod lib lint
