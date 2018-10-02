@@ -2,22 +2,14 @@ aliases:
   - &xcode
     shell: /bin/bash --login -eo pipefail
     environment:
-      XCODE_FLAGS: -scheme Base32 -parallel-testing-enabled NO
+      XCODE_FLAGS: -scheme Base32
+      XCODE_FLAGS_FOR_TEST: -enableCodeCoverage YES -parallel-testing-enabled NO
     steps:
       - checkout
       - run: mkdir -p build/reports
       - run: >
-          xcodebuild $XCODE_FLAGS test |
+          xcodebuild $XCODE_FLAGS $XCODE_FLAGS_FOR_TEST test |
           xcpretty -r junit -o build/reports/xcodebuild-macOS.xml
-      - run: >
-          xcodebuild $XCODE_FLAGS test -sdk iphonesimulator -destination "name=iPhone 8" |
-          xcpretty -r junit -o build/reports/xcodebuild-iOS.xml
-      - run: >
-          xcodebuild $XCODE_FLAGS test -sdk appletvsimulator -destination "name=Apple TV 4K" |
-          xcpretty -r junit -o build/reports/xcodebuild-tvOS.xml
-      - run: >
-          xcodebuild $XCODE_FLAGS build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm" |
-          xcpretty -r junit -o build/reports/xcodebuild-watchOS.xml
       - store_test_results:
           path: build/reports/
       - run: bash <(curl -s https://codecov.io/bash)
