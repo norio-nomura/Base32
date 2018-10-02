@@ -1,141 +1,54 @@
 aliases:
-  - &xcode-9
-    shell: /bin/bash --login -eo pipefail
-    steps:
-      - checkout
-      - run: xcodebuild -scheme Base32 test # -sdk macosx -destination arch=x86_64
-      - run: xcodebuild -scheme Base32 test -sdk iphonesimulator -destination "name=iPhone 8"
-      - run: xcodebuild -scheme Base32 test -sdk appletvsimulator -destination "name=Apple TV 4K"
-      - run: xcodebuild -scheme Base32 build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm"
-      - store_test_results:
-          path: build/reports/
-      - run: echo "ruby-2.3" > ~/.ruby-version
-      - run: pod lib lint
-      - run: bash <(curl -s https://codecov.io/bash)
-
-  - &steps-for-spm
+  - &steps-for-swiftpm
     - checkout
     - run: swift test
 
 version: 2
 jobs:
-
-  xcode_9_swift_4:
-    macos:
-      xcode: "9.0"
-    <<: *xcode-9
-
-  xcode_9.1_swift_4.0.2:
-    macos:
-      xcode: "9.1.0"
-    <<: *xcode-9
-
-  xcode_9.2_swift_4.0.3:
-    macos:
-      xcode: "9.2.0"
-    <<: *xcode-9
-
-  xcode_9.3_swift_4.1:
-    macos:
-      xcode: "9.3.1"
-    <<: *xcode-9
-
-  xcode_9.4_swift_4.1.2:
-    macos:
-      xcode: "9.4.1"
-    <<: *xcode-9
-
-  xcode_10_swift_4.2:
-    macos:
-      xcode: "10.0.0"
-    <<: *xcode-9
-
-  spm_swift_4:
-    macos:
-      xcode: "9.0"
-    steps: *steps-for-spm
-
-  spm_swift_4.0.2:
-    macos:
-      xcode: "9.1.0"
-    steps: *steps-for-spm
-
-  spm_swift_4.0.3:
-    macos:
-      xcode: "9.2.0"
-    steps: *steps-for-spm
-
-  spm_swift_4.1:
-    macos:
-      xcode: "9.3.1"
-    steps: *steps-for-spm
-
-  spm_swift_4.1.2:
-    macos:
-      xcode: "9.4.1"
-    steps: *steps-for-spm
-
-  spm_swift_4.2:
-    macos:
-      xcode: "10.0.0"
-    steps: *steps-for-spm
-
   linux_swift_4:
     docker:
       - image: norionomura/swift:40
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.0.2:
     docker:
       - image: norionomura/swift:402
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.0.3:
     docker:
       - image: norionomura/swift:403
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.1:
     docker:
       - image: norionomura/swift:41
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.1.1:
     docker:
       - image: norionomura/swift:411
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.1.2:
     docker:
       - image: norionomura/swift:412
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.1.3:
     docker:
       - image: norionomura/swift:413
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
   linux_swift_4.2:
     docker:
       - image: norionomura/swift:42
-    steps: *steps-for-spm
+    steps: *steps-for-swiftpm
 
 workflows:
   version: 2
   workflow:
     jobs:
-      - xcode_9_swift_4
-      - xcode_9.1_swift_4.0.2
-      - xcode_9.2_swift_4.0.3
-      - xcode_9.3_swift_4.1
-      - xcode_9.4_swift_4.1.2
-      - xcode_10_swift_4.2
-      - spm_swift_4
-      - spm_swift_4.0.2
-      - spm_swift_4.0.3
-      - spm_swift_4.1
-      - spm_swift_4.1.2
-      - spm_swift_4.2
       - linux_swift_4
       - linux_swift_4.0.2
       - linux_swift_4.0.3
