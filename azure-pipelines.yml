@@ -7,17 +7,17 @@ jobs:
   strategy:
     maxParallel: 10
     matrix:
-      xcode901:
+      Xcode 9.0.1:
         DEVELOPER_DIR: '/Applications/Xcode_9.0.1.app'
-      xcode91:
+      Xcode 9.1:
         DEVELOPER_DIR: '/Applications/Xcode_9.1.app'
-      xcode92:
+      Xcode 9.2:
         DEVELOPER_DIR: '/Applications/Xcode_9.2.app'
-      xcode931:
+      Xcode 9.3.1:
         DEVELOPER_DIR: '/Applications/Xcode_9.3.1.app'
-      xcode941:
+      Xcode 9.4.1:
         DEVELOPER_DIR: '/Applications/Xcode_9.4.1.app'
-      xcode10:
+      Xcode 10:
         DEVELOPER_DIR: '/Applications/Xcode_10.app'
         XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
   steps:
