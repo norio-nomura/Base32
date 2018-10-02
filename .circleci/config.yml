@@ -1,10 +1,38 @@
 aliases:
+  - &xcode
+    shell: /bin/bash --login -eo pipefail
+    environment:
+      XCODE_FLAGS: -scheme Base32 -parallel-testing-enabled NO
+    steps:
+      - checkout
+      - run: mkdir -p build/reports
+      - run: >
+          xcodebuild $XCODE_FLAGS test |
+          xcpretty -r junit -o build/reports/xcodebuild-macOS.xml
+      - run: >
+          xcodebuild $XCODE_FLAGS test -sdk iphonesimulator -destination "name=iPhone 8" |
+          xcpretty -r junit -o build/reports/xcodebuild-iOS.xml
+      - run: >
+          xcodebuild $XCODE_FLAGS test -sdk appletvsimulator -destination "name=Apple TV 4K" |
+          xcpretty -r junit -o build/reports/xcodebuild-tvOS.xml
+      - run: >
+          xcodebuild $XCODE_FLAGS build -sdk watchsimulator -destination "name=Apple Watch Series 3 - 38mm" |
+          xcpretty -r junit -o build/reports/xcodebuild-watchOS.xml
+      - store_test_results:
+          path: build/reports/
+      - run: bash <(curl -s https://codecov.io/bash)
+
   - &steps-for-swiftpm
     - checkout
     - run: swift test
 
 version: 2
 jobs:
+  xcode_10_swift_4.2:
+    macos:
+      xcode: "10.0.0"
+    <<: *xcode
+
   linux_swift_4:
     docker:
       - image: norionomura/swift:40
@@ -49,6 +77,7 @@ workflows:
   version: 2
   workflow:
     jobs:
+      - xcode_10_swift_4.2
       - linux_swift_4
       - linux_swift_4.0.2
       - linux_swift_4.0.3

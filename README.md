@@ -1,8 +1,8 @@
 # Base32 for Swift on OS X and iOS
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![Travis CI](https://img.shields.io/travis/norio-nomura/Base32.svg?style=flat)](https://travis-ci.org/norio-nomura/Base32)
 [![CircleCI](https://circleci.com/gh/norio-nomura/Base32.svg?style=svg)](https://circleci.com/gh/norio-nomura/Base32)
+[![Azure Pipelines](https://dev.azure.com/norio-nomura/Base32/_apis/build/status/norio-nomura.Base32)](https://dev.azure.com/norio-nomura/Base32/_build/latest?definitionId=4)
 [![codecov](https://codecov.io/gh/norio-nomura/Base32/branch/master/graph/badge.svg)](https://codecov.io/gh/norio-nomura/Base32)
 
 Base32 is a [Base32](https://tools.ietf.org/html/rfc4648) implementation for Swift.
