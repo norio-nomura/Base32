@@ -1,5 +1,9 @@
 trigger:
 - master
+
+variables:
+  XCODE_FLAGS: -scheme Base32
+
 jobs:
 - job: macOS
   pool:
@@ -19,15 +23,15 @@ jobs:
         DEVELOPER_DIR: '/Applications/Xcode_9.4.1.app'
       Xcode 10:
         DEVELOPER_DIR: '/Applications/Xcode_10.app'
-        XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
+        XCODE_FLAGS: '$(XCODE_FLAGS) -parallel-testing-enabled NO'
       Xcode 10.1:
         DEVELOPER_DIR: '/Applications/Xcode_10.1.app'
-        XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
+        XCODE_FLAGS: '$(XCODE_FLAGS) -parallel-testing-enabled NO'
   steps:
     - script: |
         xcodebuild -version
-        echo "##vso[task.setvariable variable=XCODE_FLAGS]-scheme Base32 $XCODE_FLAGS_FOR_TEST"
-      displayName: xcodebuild -version & set XCODE_FLAGS
+        echo $XCODE_FLAGS
+      displayName: xcodebuild -version & echo XCODE_FLAGS
     - script: >
         set -o pipefail &&
         xcodebuild $XCODE_FLAGS test |
