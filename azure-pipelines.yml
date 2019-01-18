@@ -20,6 +20,9 @@ jobs:
       Xcode 10:
         DEVELOPER_DIR: '/Applications/Xcode_10.app'
         XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
+      Xcode 10.1:
+        DEVELOPER_DIR: '/Applications/Xcode_10.1.app'
+        XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
   steps:
     - script: |
         xcodebuild -version
