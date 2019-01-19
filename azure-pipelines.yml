@@ -1,9 +1,6 @@
 trigger:
 - master
 
-variables:
-  XCODE_FLAGS: -scheme Base32
-
 jobs:
 - job: macOS
   pool:
@@ -27,6 +24,8 @@ jobs:
       Xcode 10.1:
         DEVELOPER_DIR: '/Applications/Xcode_10.1.app'
         XCODE_FLAGS: '$(XCODE_FLAGS) -parallel-testing-enabled NO'
+  variables:
+    XCODE_FLAGS: -scheme Base32
   steps:
     - script: |
         xcodebuild -version
