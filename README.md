@@ -23,6 +23,12 @@ it, simply add the following line to your Cartfile:
 
 `github "norio-nomura/Base32"`
 
+### Cocoapods
+
+Base32 is also available through [Cocoapods](https://cocoapods.org/) just adding the following line to your Podfile:
+
+`pod 'SwiftBase32', '~> 0.6.0'`
+
 ## Author
 
 Norio Nomura
