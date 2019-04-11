@@ -228,10 +228,9 @@
 			};
 			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Base32" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				English,
 				en,
 			);
 			mainGroup = "___RootGroup_";
