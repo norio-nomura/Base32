@@ -1,4 +1,4 @@
-// swift-tools-version:4.0
+// swift-tools-version:4.2
 import PackageDescription
 
 var package = Package(
@@ -9,7 +9,8 @@ var package = Package(
     targets: [
         .target(name: "Base32"),
         .testTarget(name: "Base32Tests", dependencies: ["Base32"])
-    ]
+    ],
+    swiftLanguageVersions: [.v4, .v4_2]
 )
 
 #if os(macOS)
