@@ -33,4 +33,7 @@ workflows:
       - xcode_codecov
       - test_with_image:
           name: linux_swift_4.2
-          image: norionomura/swift:4.2.0
+          image: norionomura/swift:4.2
+      - test_with_image:
+          name: linux_swift_5.0
+          image: norionomura/swift:5.0
