@@ -225,6 +225,17 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1020;
+				TargetAttributes = {
+					"______Target_Base32" = {
+						LastSwiftMigration = 1020;
+					};
+					"______Target_Base32Tests" = {
+						LastSwiftMigration = 1020;
+					};
+					"______Target_SecEncodeTransformTests" = {
+						LastSwiftMigration = 1020;
+					};
+				};
 			};
 			buildConfigurationList = "___RootConfs_" /* Build configuration list for PBXProject "Base32" */;
 			compatibilityVersion = "Xcode 3.2";
