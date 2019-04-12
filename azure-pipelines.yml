@@ -3,20 +3,10 @@ trigger:
 jobs:
 - job: macOS
   pool:
-    vmImage: $[ coalesce(variables['VM_IMAGE'], 'macOS-10.13') ] 
+    vmImage: 'macOS-10.14'
   strategy:
     maxParallel: 10
     matrix:
-      Xcode 9.0.1:
-        DEVELOPER_DIR: '/Applications/Xcode_9.0.1.app'
-      Xcode 9.1:
-        DEVELOPER_DIR: '/Applications/Xcode_9.1.app'
-      Xcode 9.2:
-        DEVELOPER_DIR: '/Applications/Xcode_9.2.app'
-      Xcode 9.3.1:
-        DEVELOPER_DIR: '/Applications/Xcode_9.3.1.app'
-      Xcode 9.4.1:
-        DEVELOPER_DIR: '/Applications/Xcode_9.4.1.app'
       Xcode 10:
         DEVELOPER_DIR: '/Applications/Xcode_10.app'
         XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
@@ -25,7 +15,6 @@ jobs:
         XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
       Xcode 10.2:
         DEVELOPER_DIR: '/Applications/Xcode_10.2.app'
-        VM_IMAGE: 'macOS-10.14'
         XCODE_FLAGS_FOR_TEST: -parallel-testing-enabled NO
   steps:
     - script: |
