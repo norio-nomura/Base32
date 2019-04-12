@@ -1,5 +1,8 @@
-aliases:
-  - &xcode
+version: 2.1
+jobs:
+  xcode_codecov:
+    macos:
+      xcode: "10.0.0"
     shell: /bin/bash --login -eo pipefail
     environment:
       XCODE_FLAGS: -scheme Base32
@@ -14,25 +17,20 @@ aliases:
           path: build/reports/
       - run: bash <(curl -s https://codecov.io/bash)
 
-  - &steps-for-swiftpm
-    - checkout
-    - run: swift test
-
-version: 2
-jobs:
-  xcode_10_swift_4.2:
-    macos:
-      xcode: "10.0.0"
-    <<: *xcode
-
-  linux_swift_4.2:
+  test_with_image:
+    parameters:
+      image:
+        type: string
     docker:
-      - image: norionomura/swift:42
-    steps: *steps-for-swiftpm
+      - image: << parameters.image >>
+    steps:
+      - checkout
+      - run: swift test
 
 workflows:
-  version: 2
   workflow:
     jobs:
-      - xcode_10_swift_4.2
-      - linux_swift_4.2
+      - xcode_codecov
+      - test_with_image:
+          name: linux_swift_4.2
+          image: norionomura/swift:4.2.0
