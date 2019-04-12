@@ -224,18 +224,10 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     
     // return
     if let base32Encoded = String(validatingUTF8: resultBuffer) {
-#if swift(>=4.1)
         resultBuffer.deallocate()
-#else
-        resultBuffer.deallocate(capacity: resultBufferSize)
-#endif
         return base32Encoded
     } else {
-#if swift(>=4.1)
         resultBuffer.deallocate()
-#else
-        resultBuffer.deallocate(capacity: resultBufferSize)
-#endif
         fatalError("internal error")
     }
 }
@@ -305,7 +297,7 @@ private func base32decode(_ string: String, _ table: [UInt8]) -> [UInt8]? {
     
     // validate string
     let leastPaddingLength = getLeastPaddingLength(string)
-    if let index = string.unicodeScalars.index(where: {$0.value > 0xff || table[Int($0.value)] > 31}) {
+    if let index = string.unicodeScalars.firstIndex(where: {$0.value > 0xff || table[Int($0.value)] > 31}) {
         // index points padding "=" or invalid character that table does not contain.
         let pos = string.unicodeScalars.distance(from: string.unicodeScalars.startIndex, to: index)
         // if pos points padding "=", it's valid.
