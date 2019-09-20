@@ -1,13 +1,14 @@
-name: CI
+name: xcodebuild
+
 on:
   push:
-    branches:
-      - master
-  pull_request: {}
+    branches: [master]
+    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '.github/workflows/xcodebuild.yml']
+  pull_request:
+    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '.github/workflows/xcodebuild.yml']
 
 jobs:
   xcodebuild:
-    name: xcodebuild
     strategy:
       matrix:
         xcode:
@@ -56,36 +57,3 @@ jobs:
         shell: bash
       - run: bash <(curl -s https://codecov.io/bash)
         shell: bash
-
-  SwiftPM_on_macOS:
-    name: SwiftPM on macOS
-    strategy:
-      matrix:
-        xcode: ['9.4.1','10','10.1','10.2','10.2.1','10.3','11']
-    runs-on: macOS-10.14
-    steps:
-      - uses: actions/checkout@v1
-      - env:
-          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app
-        run: swift test
-
-  pod_lib_lint:
-    name: pod lib lint
-    runs-on: macOS-10.14
-    steps:
-      - uses: actions/checkout@v1
-      - run: pod lib lint
-        env:
-          DEVELOPER_DIR: /Applications/Xcode_10.3.app
-
-  SwiftPM_on_Linux:
-    name: SwiftPM on Linux
-    strategy:
-      matrix:
-        tag: ['4.1', '4.2', '5.0', '5.1']
-    runs-on: ubuntu-latest
-    container:
-      image: norionomura/swift:${{ matrix.tag }}
-    steps:
-      - uses: actions/checkout@v1
-      - run: swift test
