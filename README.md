@@ -1,8 +1,9 @@
 # Base32 for Swift on OS X and iOS
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CircleCI](https://circleci.com/gh/norio-nomura/Base32.svg?style=svg)](https://circleci.com/gh/norio-nomura/Base32)
-[![Azure Pipelines](https://dev.azure.com/norio-nomura/Base32/_apis/build/status/norio-nomura.Base32)](https://dev.azure.com/norio-nomura/Base32/_build/latest?definitionId=4)
+[![SwiftPM](https://github.com/norio-nomura/Base32/workflows/SwiftPM/badge.svg)](https://launch-editor.github.com/actions?workflowID=SwiftPM&event=pull_request&nwo=norio-nomura%2FBase32)
+[![xcodebuild](https://github.com/norio-nomura/Base32/workflows/xcodebuild/badge.svg)](https://launch-editor.github.com/actions?workflowID=xcodebuild&event=pull_request&nwo=norio-nomura%2FBase32)
+[![pod lib lint](https://github.com/norio-nomura/Base32/workflows/pod%20lib%20lint/badge.svg)](https://launch-editor.github.com/actions?workflowID=pod%20lib%20lint&event=pull_request&nwo=norio-nomura%2FBase32)
 [![codecov](https://codecov.io/gh/norio-nomura/Base32/branch/master/graph/badge.svg)](https://codecov.io/gh/norio-nomura/Base32)
 
 Base32 is a [Base32](https://tools.ietf.org/html/rfc4648) implementation for Swift.
