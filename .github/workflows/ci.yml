@@ -1,0 +1,91 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+  pull_request: {}
+
+jobs:
+  xcodebuild:
+    name: xcodebuild
+    strategy:
+      matrix:
+        xcode:
+          - version: '9.4.1'
+          - version: '10'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+          - version: '10.1'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+          - version: '10.2'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+          - version: '10.2.1'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+          - version: '10.3'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+          - version: '11'
+            flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
+    runs-on: macOS-10.14
+    steps:
+      - uses: actions/checkout@v1
+      - run: xcodebuild -version
+        env: 
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
+      - name: macOS
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
+        run: xcodebuild -scheme Base32 ${{ matrix.xcode.flag_for_test }} test | xcpretty
+        shell: bash
+      - name: iPhone Simulator
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
+        run: > 
+          xcodebuild -scheme Base32 ${{ matrix.xcode.flag_for_test }} test
+          -sdk iphonesimulator -destination "name=iPhone 8" | xcpretty
+        shell: bash
+      - name: Apple TV Simulator
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
+        run: >
+          xcodebuild -scheme Base32 ${{ matrix.xcode.flag_for_test }} test
+          -sdk appletvsimulator -destination "name=Apple TV 4K" | xcpretty
+        shell: bash
+      - name: watchOS Simulator
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
+        run: xcodebuild -scheme Base32 build -sdk watchsimulator | xcpretty
+        shell: bash
+      - run: bash <(curl -s https://codecov.io/bash)
+        shell: bash
+
+  SwiftPM_on_macOS:
+    name: SwiftPM on macOS
+    strategy:
+      matrix:
+        xcode: ['9.4.1','10','10.1','10.2','10.2.1','10.3','11']
+    runs-on: macOS-10.14
+    steps:
+      - uses: actions/checkout@v1
+      - env:
+          DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode }}.app
+        run: swift test
+
+  pod_lib_lint:
+    name: pod lib lint
+    runs-on: macOS-10.14
+    steps:
+      - uses: actions/checkout@v1
+      - run: pod lib lint
+        env:
+          DEVELOPER_DIR: /Applications/Xcode_10.3.app
+
+  SwiftPM_on_Linux:
+    name: SwiftPM on Linux
+    strategy:
+      matrix:
+        tag: ['4.1', '4.2', '5.0', '5.1']
+    runs-on: ubuntu-latest
+    container:
+      image: norionomura/swift:${{ matrix.tag }}
+    steps:
+      - uses: actions/checkout@v1
+      - run: swift test
