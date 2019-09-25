@@ -4,18 +4,18 @@ on:
   push:
     branches: [master]
     paths: 
+      - '.github/workflows/swiftpm.yml'
+      - 'Package*'
       - 'Sources/*/*'
       - 'Tests/*'
       - 'Tests/*/*'
-      - 'Package*'
-      - '.github/workflows/swiftpm.yml'
   pull_request:
     paths: 
+      - '.github/workflows/swiftpm.yml'
+      - 'Package*'
       - 'Sources/*/*'
       - 'Tests/*'
       - 'Tests/*/*'
-      - 'Package*'
-      - '.github/workflows/swiftpm.yml'
 
 jobs:
   macOS:

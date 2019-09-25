@@ -4,16 +4,20 @@ on:
   push:
     branches: [master]
     paths: 
+      - '.github/workflows/xcodebuild.yml'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
       - 'Sources/*/*'
       - 'Tests/*/*'
-      - 'Base32.xcodeproj/*'
-      - '.github/workflows/xcodebuild.yml'
   pull_request:
     paths: 
+      - '.github/workflows/xcodebuild.yml'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
       - 'Sources/*/*'
       - 'Tests/*/*'
-      - 'Base32.xcodeproj/*'
-      - '.github/workflows/xcodebuild.yml'
 
 jobs:
   xcodebuild:
