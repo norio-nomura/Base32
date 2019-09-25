@@ -3,9 +3,21 @@ name: xcodebuild
 on:
   push:
     branches: [master]
-    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '.github/workflows/xcodebuild.yml']
+    paths: 
+      - '.github/workflows/xcodebuild.yml'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
+      - 'Sources/*/*'
+      - 'Tests/*/*'
   pull_request:
-    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '.github/workflows/xcodebuild.yml']
+    paths: 
+      - '.github/workflows/xcodebuild.yml'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
+      - 'Sources/*/*'
+      - 'Tests/*/*'
 
 jobs:
   xcodebuild:
@@ -55,5 +67,6 @@ jobs:
           DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode.version }}.app
         run: xcodebuild -scheme Base32 build -sdk watchsimulator | xcpretty
         shell: bash
-      - run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
+      - if: matrix.xcode.version == '10.3'
+        run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
         shell: bash

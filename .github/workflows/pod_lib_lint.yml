@@ -3,9 +3,23 @@ name: pod lib lint
 on:
   push:
     branches: [master]
-    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '*.podspec', '.github/workflows/pod_lib_lint.yml']
+    paths: 
+      - '.github/workflows/pod_lib_lint.yml'
+      - '*.podspec'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
+      - 'Sources/*/*'
+      - 'Tests/*/*'
   pull_request:
-    paths: ['Sources/*', 'Tests/*', 'Base32.xcodeproj/*', '*.podspec', '.github/workflows/pod_lib_lint.yml']
+    paths: 
+      - '.github/workflows/pod_lib_lint.yml'
+      - '*.podspec'
+      - 'Base32.xcodeproj/*'
+      - 'Base32.xcodeproj/*/*'
+      - 'Base32.xcodeproj/*/*/*'
+      - 'Sources/*/*'
+      - 'Tests/*/*'
 
 jobs:
   pod_lib_lint:
