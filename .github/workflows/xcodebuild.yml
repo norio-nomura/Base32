@@ -31,7 +31,7 @@ jobs:
           - '/Applications/Xcode_10.3.app'
           - '/Applications/Xcode_11.app'
         xcode_flags: ['-scheme Base32 -enableCodeCoverage YES -parallel-testing-enabled NO test']
-        xcode_flags_without_test: ['-scheme Base32 build']
+        xcode_flags_for_build_only: ['-scheme Base32 build']
     runs-on: macOS-10.14
     steps:
       - uses: actions/checkout@v1
@@ -51,7 +51,7 @@ jobs:
         shell: bash
       - name: watchOS Simulator
         env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
-        run: xcodebuild ${{ matrix.xcode_flags_without_test }} -sdk watchsimulator | xcpretty
+        run: xcodebuild ${{ matrix.xcode_flags_for_build_only }} -sdk watchsimulator | xcpretty
         shell: bash
       - name: Codecov
         if: contains(matrix.developer_dir, '10.3')
