@@ -24,7 +24,6 @@ jobs:
     strategy:
       matrix:
         xcode:
-          - version: '9.4.1'
           - version: '10'
             flag_for_test: -enableCodeCoverage YES -parallel-testing-enabled NO
           - version: '10.1'
