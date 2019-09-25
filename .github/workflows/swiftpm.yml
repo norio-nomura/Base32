@@ -18,10 +18,10 @@ on:
       - 'Tests/*/*'
 
 jobs:
-  macOS:
+  Xcode:
     strategy:
       matrix:
-        xcode: ['9.4.1','10','10.1','10.2','10.2.1','10.3','11']
+        xcode: ['10','10.1','10.2','10.2.1','10.3','11']
     runs-on: macOS-10.14
     steps:
       - uses: actions/checkout@v1
@@ -32,7 +32,7 @@ jobs:
   Linux:
     strategy:
       matrix:
-        tag: ['4.1', '4.2', '5.0', '5.1']
+        tag: ['4.2', '5.0', '5.1']
     runs-on: ubuntu-latest
     container:
       image: norionomura/swift:${{ matrix.tag }}
