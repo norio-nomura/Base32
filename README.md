@@ -28,7 +28,7 @@ it, simply add the following line to your Cartfile:
 
 Base32 is also available through [Cocoapods](https://cocoapods.org/) just adding the following line to your Podfile:
 
-`pod 'SwiftBase32', '~> 0.7.0'`
+`pod 'SwiftBase32', '~> 0.8.0'`
 
 ## Author
 
