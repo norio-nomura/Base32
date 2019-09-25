@@ -30,7 +30,7 @@ import Foundation
 
 public func base16Encode(_ data: Data, uppercase: Bool = true) -> String {
     return data.withUnsafeBytes {
-        base16encode(UnsafeRawPointer($0), data.count, uppercase)
+        base16encode($0.baseAddress!, $0.count, uppercase)
     }
 }
 
