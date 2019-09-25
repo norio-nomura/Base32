@@ -53,6 +53,7 @@ jobs:
         env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
         run: xcodebuild ${{ matrix.xcode_flags_without_test }} -sdk watchsimulator | xcpretty
         shell: bash
-      - if: matrix.xcode.version == '10.3'
+      - name: Codecov
+        if: contains(matrix.developer_dir, '10.3')
         run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
         shell: bash
