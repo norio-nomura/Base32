@@ -32,13 +32,13 @@ import Foundation
 
 public func base32Encode(_ data: Data) -> String {
     return data.withUnsafeBytes {
-        base32encode(UnsafeRawPointer($0), data.count, alphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, alphabetEncodeTable)
     }
 }
 
 public func base32HexEncode(_ data: Data) -> String {
     return data.withUnsafeBytes {
-        base32encode(UnsafeRawPointer($0), data.count, extendedHexAlphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, extendedHexAlphabetEncodeTable)
     }
 }
 
