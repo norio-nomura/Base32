@@ -6,20 +6,18 @@ on:
     paths: 
       - '.github/workflows/pod_lib_lint.yml'
       - '*.podspec'
-      - 'Base32.xcodeproj/*'
-      - 'Base32.xcodeproj/*/*'
-      - 'Base32.xcodeproj/*/*/*'
-      - 'Sources/*/*'
-      - 'Tests/*/*'
+      - 'Base32.xcodeproj/**'
+      - 'Sources/**'
+      - 'Tests/**'
+      - '!Tests/LinuxMain.swift'
   pull_request:
     paths: 
       - '.github/workflows/pod_lib_lint.yml'
       - '*.podspec'
-      - 'Base32.xcodeproj/*'
-      - 'Base32.xcodeproj/*/*'
-      - 'Base32.xcodeproj/*/*/*'
-      - 'Sources/*/*'
-      - 'Tests/*/*'
+      - 'Base32.xcodeproj/**'
+      - 'Sources/**'
+      - 'Tests/**'
+      - '!Tests/LinuxMain.swift'
 
 jobs:
   pod_lib_lint:
