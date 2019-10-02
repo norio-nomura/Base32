@@ -21,37 +21,28 @@ jobs:
   xcodebuild:
     strategy:
       matrix:
-        developer_dir:
-          - '/Applications/Xcode_10.app'
-          - '/Applications/Xcode_10.1.app'
-          - '/Applications/Xcode_10.2.app'
-          - '/Applications/Xcode_10.2.1.app'
-          - '/Applications/Xcode_10.3.app'
-          - '/Applications/Xcode_11.app'
+        xcode_version: ['10','10.1','10.2','10.2.1','10.3','11']
         xcode_flags: ['-scheme Base32 -enableCodeCoverage YES -parallel-testing-enabled NO test']
         xcode_flags_for_build_only: ['-scheme Base32 build']
     runs-on: macOS-10.14
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
     steps:
       - uses: actions/checkout@v1
       - run: xcodebuild -version
-        env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
       - name: macOS
-        env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
         run: xcodebuild ${{ matrix.xcode_flags }} | xcpretty
         shell: bash
       - name: iPhone Simulator
-        env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
         run: xcodebuild ${{ matrix.xcode_flags }} -sdk iphonesimulator -destination "name=iPhone 8" | xcpretty
         shell: bash
       - name: Apple TV Simulator
-        env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
         run: xcodebuild ${{ matrix.xcode_flags }} -sdk appletvsimulator -destination "name=Apple TV 4K" | xcpretty
         shell: bash
       - name: watchOS Simulator
-        env: { 'DEVELOPER_DIR': '${{ matrix.developer_dir }}' }
         run: xcodebuild ${{ matrix.xcode_flags_for_build_only }} -sdk watchsimulator | xcpretty
         shell: bash
       - name: Codecov
-        if: contains(matrix.developer_dir, '10.3')
+        if: matrix.xcode_version == '10.3'
         run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
         shell: bash
