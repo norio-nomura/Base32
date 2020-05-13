@@ -3,14 +3,14 @@ name: xcodebuild
 on:
   push:
     branches: [master]
-    paths: 
+    paths:
       - '.github/workflows/xcodebuild.yml'
       - 'Base32.xcodeproj/**'
       - 'Sources/**'
       - 'Tests/**'
       - '!Tests/LinuxMain.swift'
   pull_request:
-    paths: 
+    paths:
       - '.github/workflows/xcodebuild.yml'
       - 'Base32.xcodeproj/**'
       - 'Sources/**'
@@ -21,10 +21,10 @@ jobs:
   xcodebuild:
     strategy:
       matrix:
-        xcode_version: ['10','10.1','10.2','10.2.1','10.3','11']
+        xcode_version: ['11.4.1']
         xcode_flags: ['-scheme Base32 -enableCodeCoverage YES -parallel-testing-enabled NO test']
         xcode_flags_for_build_only: ['-scheme Base32 build']
-    runs-on: macOS-10.14
+    runs-on: macOS-10.15
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
     steps:
@@ -42,7 +42,7 @@ jobs:
       - name: watchOS Simulator
         run: xcodebuild ${{ matrix.xcode_flags_for_build_only }} -sdk watchsimulator | xcpretty
         shell: bash
-      - name: Codecov
-        if: matrix.xcode_version == '10.3'
-        run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
-        shell: bash
+      # - name: Codecov
+      #   if: matrix.xcode_version == '10.3'
+      #   run: curl -s https://codecov.io/bash | bash -s -- -t ${{ secrets.CODECOV_TOKEN }}
+      #   shell: bash
