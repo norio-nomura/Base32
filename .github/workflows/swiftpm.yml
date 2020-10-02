@@ -18,8 +18,9 @@ on:
 jobs:
   Xcode:
     strategy:
+      fail-fast: false
       matrix:
-        xcode_version: ['11.4.1']
+        xcode_version: ['11.3.1', '11.7', '12']
     runs-on: macOS-10.15
     env:
       DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
@@ -30,11 +31,11 @@ jobs:
 
   Linux:
     strategy:
+      fail-fast: false
       matrix:
-        tag: ['4.2', '5.0', '5.1']
+        tag: ['5.1', '5.2', '5.3']
     runs-on: ubuntu-latest
-    container:
-      image: norionomura/swift:${{ matrix.tag }}
+    container: norionomura/swift:${{ matrix.tag }}
     steps:
       - uses: actions/checkout@v1
       - run: swift test
