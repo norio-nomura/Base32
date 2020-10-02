@@ -20,6 +20,7 @@ on:
 jobs:
   xcodebuild:
     strategy:
+      fail-fast: false
       matrix:
         xcode_version: ['11.3.1', '11.7', '12']
         xcode_flags: ['-scheme Base32 -enableCodeCoverage YES -parallel-testing-enabled NO test']

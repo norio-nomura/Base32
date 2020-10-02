@@ -18,6 +18,7 @@ on:
 jobs:
   Xcode:
     strategy:
+      fail-fast: false
       matrix:
         xcode_version: ['11.3.1', '11.7', '12']
     runs-on: macOS-10.15
@@ -30,6 +31,7 @@ jobs:
 
   Linux:
     strategy:
+      fail-fast: false
       matrix:
         tag: ['5.1', '5.2', '5.3']
     runs-on: ubuntu-latest
