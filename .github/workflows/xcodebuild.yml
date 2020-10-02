@@ -21,7 +21,7 @@ jobs:
   xcodebuild:
     strategy:
       matrix:
-        xcode_version: ['11.4.1']
+        xcode_version: ['11.3.1', '11.7', '12']
         xcode_flags: ['-scheme Base32 -enableCodeCoverage YES -parallel-testing-enabled NO test']
         xcode_flags_for_build_only: ['-scheme Base32 build']
     runs-on: macOS-10.15
