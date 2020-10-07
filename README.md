@@ -10,7 +10,7 @@ Base32 is a [Base32](https://tools.ietf.org/html/rfc4648) implementation for Swi
 
 ## Requirements
 
-* iOS 8 or later
+* iOS 9 or later
 * macOS 10.9 or later
 * tvOS 9 or later
 * watchOS 2 or later
@@ -28,7 +28,7 @@ it, simply add the following line to your Cartfile:
 
 Base32 is also available through [Cocoapods](https://cocoapods.org/) just adding the following line to your Podfile:
 
-`pod 'SwiftBase32', '~> 0.8.0'`
+`pod 'SwiftBase32', '~> 0.9.0'`
 
 ## Author
 
