@@ -30,15 +30,15 @@ import Foundation
 
 // MARK: - Base32 Data <-> String
 
-public func base32Encode(_ data: Data) -> String {
+public func base32Encode(_ data: Data, padding: Bool = true) -> String {
     return data.withUnsafeBytes {
-        base32encode($0.baseAddress!, $0.count, alphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, alphabetEncodeTable, padding: padding)
     }
 }
 
-public func base32HexEncode(_ data: Data) -> String {
+public func base32HexEncode(_ data: Data, padding: Bool = true) -> String {
     return data.withUnsafeBytes {
-        base32encode($0.baseAddress!, $0.count, extendedHexAlphabetEncodeTable)
+        base32encode($0.baseAddress!, $0.count, extendedHexAlphabetEncodeTable, padding: padding)
     }
 }
 
@@ -81,6 +81,11 @@ extension String {
             base32encode($0.baseAddress!, $0.count - 1, alphabetEncodeTable)
         }
     }
+    public var base32EncodedStringNoPadding: String {
+        return utf8CString.withUnsafeBufferPointer {
+            base32encode($0.baseAddress!, $0.count - 1, alphabetEncodeTable, padding: false)
+        }
+    }
     
     public func base32DecodedString(_ encoding: String.Encoding = .utf8) -> String? {
         return base32DecodedData.flatMap {
@@ -98,6 +103,11 @@ extension String {
             base32encode($0.baseAddress!, $0.count - 1, extendedHexAlphabetEncodeTable)
         }
     }
+    public var base32HexEncodedStringNoPadding: String {
+        return utf8CString.withUnsafeBufferPointer {
+            base32encode($0.baseAddress!, $0.count - 1, extendedHexAlphabetEncodeTable, padding: false)
+        }
+    }
     
     public func base32HexDecodedString(_ encoding: String.Encoding = .utf8) -> String? {
         return base32HexDecodedData.flatMap {
@@ -110,6 +120,10 @@ extension Data {
     // base32
     public var base32EncodedString: String {
         return base32Encode(self)
+    }
+    
+    public var base32EncodedStringNoPadding: String {
+        return base32Encode(self, padding: false)
     }
     
     public var base32EncodedData: Data {
@@ -142,7 +156,7 @@ let alphabetEncodeTable: [Int8] = ["A","B","C","D","E","F","G","H","I","J","K","
 
 let extendedHexAlphabetEncodeTable: [Int8] = ["0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V"].map { (c: UnicodeScalar) -> Int8 in Int8(c.value) }
 
-private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int8]) -> String {
+private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int8], padding: Bool = true) -> String {
     if length == 0 {
         return ""
     }
@@ -195,7 +209,8 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     }
 
     // padding
-    let pad = Int8(UnicodeScalar("=").value)
+    if padding {
+        let pad = Int8(UnicodeScalar("=").value)
     switch length {
     case 0:
         encoded[0] = 0
@@ -216,6 +231,8 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     default:
         encoded[8] = 0
         break
+    }
+    
     }
     
     // return
