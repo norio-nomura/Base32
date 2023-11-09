@@ -118,6 +118,7 @@ class Base32Tests: XCTestCase {
                 for (test, expect, notPaddedExpect, expectHex, notPaddedHexExpect) in self.vectors {
                     let result = test.base32EncodedString
                     let notPaddedResult = test.base32EncodedStringNoPadding
+                    print("not padded result for \(test): \(notPaddedResult)")
                     let resultHex = test.base32HexEncodedString
                     let NotPaddedResultHex = test.base32HexEncodedStringNoPadding
                     XCTAssertEqual(result, expect, "\(test).base32EncodedString")
