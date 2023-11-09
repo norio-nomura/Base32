@@ -211,28 +211,33 @@ private func base32encode(_ data: UnsafeRawPointer, _ length: Int, _ table: [Int
     // padding
     if padding {
         let pad = Int8(UnicodeScalar("=").value)
-    switch length {
-    case 0:
-        encoded[0] = 0
-    case 1:
-        encoded[2] = pad
-        encoded[3] = pad
-        fallthrough
-    case 2:
-        encoded[4] = pad
-        fallthrough
-    case 3:
-        encoded[5] = pad
-        encoded[6] = pad
-        fallthrough
-    case 4:
-        encoded[7] = pad
-        fallthrough
-    default:
-        encoded[8] = 0
-        break
-    }
-    
+        switch length {
+        case 0:
+            encoded[0] = 0
+        case 1:
+            encoded[2] = pad
+            encoded[3] = pad
+            fallthrough
+        case 2:
+            encoded[4] = pad
+            fallthrough
+        case 3:
+            encoded[5] = pad
+            encoded[6] = pad
+            fallthrough
+        case 4:
+            encoded[7] = pad
+            fallthrough
+        default:
+            encoded[8] = 0
+            break
+        }
+    } else {
+        if length == 0 {
+            encoded[0] = 0
+        } else {
+            encoded[8] = 0
+        }
     }
     
     // return
